@@ -1,0 +1,22 @@
+{
+    "name": "crodas/validate",
+    "description": "Validation library",
+    "require": {
+        "crodas/path": "*",
+        "crodas/notoj": "*",
+        "crodas/simple-view-engine": "*"
+    },
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "César D. Rodas",
+            "email": "crodas@php.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "crodas": "lib/"
+        }
+    }
+}
