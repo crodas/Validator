@@ -34,57 +34,9 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate;
+namespace crodas\Validate\Rule;
 
-require __DIR__ . '/Template/Functions.php';
-
-use crodas\SimpleView\FixCode;
-
-class Validate
+class Not extends Groups
 {
-    protected $functions;
-    protected $map;
-    protected $ns;
-
-    public function createTest($name)
-    {
-        $fnc = "validate_" . sha1($name);
-        $this->map[$name] = $fnc;
-        $this->functions[$fnc] = new ValidateFunction($this);
-        return $this->functions[$fnc];
-    }
-
-    public function setNamespace($ns)
-    {
-        if ($ns !== NULL && !preg_match('/^([a-z][a-z0-9_]*\\\\?)+$/i', $ns)) {
-            throw new \RuntimeException("{$ns} is not a valid namespace");
-        }
-        $this->ns = $ns;
-
-        return $this;
-    }
-
-    public function rule($name, Array $args = [])
-    {
-        $class = __NAMESPACE__ . "\\Rule\\" . ucfirst($name);
-        if (class_exists($class)) {
-            return new $class($name, $args);
-        }
-        return new Rule($name, $args);
-    }
-
-    public function toString()
-    {
-        $var       = '$var_' . uniqid(true);
-        $funcmap   = $this->map;
-        $functions = $this->functions;
-        $namespace = $this->ns;
-        $code      =  Templates::get('body')
-            ->render(compact(
-                'namespace','funcmap', 
-                'body', 'name', 'var', 'functions'
-            ), true);
-
-        return FixCode::fix($code);
-    }
+    protected $canBeSimplified = false;
 }

@@ -56,6 +56,33 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Error.tpl
+     */
+    class class_873c1a91cea8cbb245abe554d24748c8fe4e84b9 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            if ($self->msg) {
+                echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(_(\"";
+                echo htmlentities($self->msg, ENT_QUOTES, 'UTF-8', false);
+                echo "\"));\n}\n";
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Optional.tpl
      */
     class class_73177f083ce4946c03c09151e30c22c4883d8a97 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
@@ -69,7 +96,34 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "if (empty(" . ($input) . ")) {\n    return true;\n}\n";
+            echo "if (empty(" . ($input) . ")) {\n    return true;\n}\n" . ($self->result) . " = true;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Not.tpl
+     */
+    class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = false;\n";
+            foreach($args as $rule) {
+                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+            }
+            echo "exit_" . (sha1($self->result)) . ":\n" . ($self->result) . " = !" . ($self->result) . ";\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -140,7 +194,7 @@ namespace {
             }
             echo $self->result . " = true;\n";
             foreach($args as $rule) {
-                echo "    if (" . ($self->result) . ") {\n        " . ( $rule->toCode($input) ) . "\n        if (!" . ($rule->result) . ") {\n            " . ($self->result) . " = false;\n            goto exit_" . (sha1($self->result)) . ";\n        }\n    }\n";
+                echo "    " . ( $rule->toCode($input) ) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 
@@ -190,7 +244,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    if (!" . ($self->result) . ") {\n        " . ( $rule->toCode($input) ) . "\n        if (" . ($rule->result) . ") {\n            " . ($self->result) . " = true;\n            exit_" . (sha1($self->result)) . ";\n        }\n    }\n";
+                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 
@@ -322,8 +376,12 @@ namespace crodas\Validate {
         public static function get($name, Array $context = array())
         {
             static $classes = array (
+                'error.tpl' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
+                'error' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
                 'optional.tpl' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
                 'optional' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
+                'not.tpl' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
+                'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
                 'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
                 'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
                 'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',

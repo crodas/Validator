@@ -36,41 +36,59 @@
 */
 namespace crodas\Validate;
 
-class Rule
+use crodas\SimpleView\FixCode;
+use crodas\File;
+
+class Builder
 {
-    public    $result;
-    public    $msg;
-    protected $type;
-    protected $args;
+    protected $functions;
+    protected $map;
+    protected $ns;
 
-    public function __construct($type, Array $args, $msg='')
+    public function createTest($name)
     {
-        $this->result = '$result_' . uniqid(true);
-        $this->type   = $type;
-        $this->msg    = $msg;
-        $this->args   = $args;
+        $fnc = "validate_" . sha1($name);
+        $this->map[$name] = $fnc;
+        $this->functions[$fnc] = new ValidateFunction($this);
+        return $this->functions[$fnc];
     }
 
-    public function getWeight()
+    public function setNamespace($ns)
     {
-        $weight = 10;
-        foreach ($this->args as $input) {
-            $weight += 1;
-            if ($input instanceof self) {
-                $weight += $input->getWeight();
-            }
+        if ($ns !== NULL && !preg_match('/^([a-z][a-z0-9_]*\\\\?)+$/i', $ns)) {
+            throw new \RuntimeException("{$ns} is not a valid namespace");
         }
-        return $weight;
+        $this->ns = $ns;
+
+        return $this;
     }
 
-    public function toCode($input)
+    public function rule($name, Array $args = [], $msg = '')
     {
-        $self  = $this;
-        $args  = $this->args;
-        $code  = Templates::get($this->type)
-            ->render(compact('self', 'input', 'args'), true);
-        $code .= Templates::get('error')
-            ->render(compact('self'), true);
-        return $code;
+        $class = __NAMESPACE__ . "\\Rule\\" . ucfirst($name);
+        if (class_exists($class)) {
+            return new $class($name, $args, $msg);
+        }
+        return new Rule($name, $args, $msg);
+    }
+
+    public function __toString()
+    {
+        $var       = '$var_' . uniqid(true);
+        $funcmap   = $this->map;
+        $functions = $this->functions;
+        $namespace = $this->ns;
+        $code      =  Templates::get('body')
+            ->render(compact(
+                'namespace','funcmap', 
+                'body', 'name', 'var', 'functions'
+            ), true);
+
+        return FixCode::fix($code);
+    }
+
+    public function writeTo($file)
+    {
+        return File::write($file, (string)$this);
     }
 }

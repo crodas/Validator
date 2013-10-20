@@ -47,9 +47,14 @@ class ValidateFunction
         $this->parent = $parent;
     }
 
-    public function addRule($name, Array $args = [])
+    public function addRule($name, $args = [], $error = '')
     {
-        $this->rules[] = $this->parent->rule($name, $args);
+        if (is_callable($args)) {
+            $tmp = new self($this->parent);
+            $args($tmp);
+            $args = $tmp->rules;
+        }
+        $this->rules[] = $this->parent->rule($name, $args, $error);
         return $this;
     }
 

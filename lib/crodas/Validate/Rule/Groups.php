@@ -40,9 +40,11 @@ use crodas\Validate\Rule;
 
 class Groups extends Rule
 {
+    protected $canBeSimplified = false;
+
     public function toCode($var)
     {
-        if (count($this->args) == 1) {
+        if (count($this->args) == 1 && $this->canBeSimplified) {
             return $this->args[0]->toCode($var);
         }
         usort($this->args, function($a, $b) {
