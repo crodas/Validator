@@ -44,6 +44,7 @@ class Builder
     protected $functions;
     protected $map;
     protected $ns;
+    protected $classes = [];
 
     public function createTest($name)
     {
@@ -78,13 +79,25 @@ class Builder
         $funcmap   = $this->map;
         $functions = $this->functions;
         $namespace = $this->ns;
-        $code      =  Templates::get('body')
+        $classes   = $this->classes;
+        $code      = Templates::get('body')
             ->render(compact(
-                'namespace','funcmap', 
+                'namespace','funcmap', 'classes',
                 'body', 'name', 'var', 'functions'
             ), true);
 
         return FixCode::fix($code);
+    }
+
+    public function mapClass(Array $map)
+    {
+        foreach ($map as $name => $class) {
+            if (Empty($class['props']) || !is_array($class['props'])) {
+                throw new \Exception("Invalid class map for $name");
+            }
+            $this->classes[$name] = $class['props'];
+        }
+        return $this;
     }
 
     public function writeTo($file)

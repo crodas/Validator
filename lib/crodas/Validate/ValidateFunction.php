@@ -47,6 +47,16 @@ class ValidateFunction
         $this->parent = $parent;
     }
 
+    public function ruleExists($name)
+    {
+        try {
+            Templates::get($name);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     public function addRule($name, $args = [], $error = '')
     {
         if (is_callable($args)) {

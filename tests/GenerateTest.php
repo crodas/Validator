@@ -6,6 +6,42 @@ use test\FormValidator as f;
 
 class GenerateTest extends \phpunit_framework_testcase
 {
+    public function testAnnotation1()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->age = 44;
+        $errors = $val->validate($foo);
+        $this->AssertTrue(empty($errors));
+    }
+
+    public function testAnnotation2()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->age  = 33;
+        $foo->foo  = 'something';
+        $foo->setTest(rand(5, 99));
+        $errors = $val->validate($foo);
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['test']));
+        $this->assertTrue(strpos($errors['test']->getMessage(), 'invalid') > 0);
+        $this->assertEquals(count($errors), 1);
+    }
+
+    public function testAnnotationRaw()
+    {
+        $val = get_validator();
+        $errors = $val->validateArray([
+            'test' => rand(5, 99),
+            'foo'  => 'something',
+        ], 'Class1');
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['test']));
+        $this->assertTrue(strpos($errors['test']->getMessage(), 'invalid') > 0);
+        $this->assertEquals(count($errors), 1);
+    }
+
     public function testGenerate()
     {
         $validator = new crodas\Validate\Builder;
@@ -19,7 +55,6 @@ class GenerateTest extends \phpunit_framework_testcase
         
         $rules = $validator->createTest('username')
             ->addRule('noWhitespace', [], 'Whitespaces are not allowed')
-            ->addRule('alnum')
             ->addRule('length', [5, 15]);
         
         $rules = $validator->createTest('between')
@@ -48,16 +83,17 @@ class GenerateTest extends \phpunit_framework_testcase
     {
         $this->assertTrue(f\validate('username', 'crodas'));
         $this->assertFalse(f\validate('username', 'cro'));
-        $this->assertFalse(f\validate('username', 'crodas!'));
+        $this->assertFalse(f\validate('username', 'crodasssssssssssssssss'));
     }
 
     /**
      *  @dependsOn testGenerate 
-     *  @expectsException \InvalidArgumentException
+     *  @expectedException UnexpectedValueException
+     *  @expectedExceptionMessage Whitespace
      */
     public function testException()
     {
-        f\validate('username', 'something here');
+        f\validate('username', 's here');
     }
 
     /**

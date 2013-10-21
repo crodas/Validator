@@ -106,6 +106,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from MinLength.tpl
+     */
+    class class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo  $self->result  . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Not.tpl
      */
     class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
@@ -244,7 +267,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 
@@ -302,11 +325,25 @@ namespace {
             }
             echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
             foreach($funcmap as $name => $func) {
-                echo "        case \"";
-                echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
-                echo "\":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
+                echo "        case " . (var_export($name, true)) . ":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
             }
-            echo "        default:\n            throw new \\Exception(\"Cannot find validator for {\$rule}\");\n    }\n    return \$valid;\n\n}\n";
+            echo "        default:\n            throw new \\Exception(\"Cannot find validator for {\$rule}\");\n    }\n    return \$valid;\n\n}\n\n";
+            if (count($classes) > 0) {
+                echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n";
+                foreach($classes as $name => $props) {
+                    echo "    switch (\$class) {\n    case " . (var_export(strtolower($name), true)) . ":\n";
+                    foreach($props as $name => $is_public) {
+                        if ($is_public) {
+                            echo "                \$data[" . (var_export($name, true)) . "] = \$object->" . ($name) . ";\n";
+                        }
+                        else {
+                            echo "                \$property = new \\ReflectionProperty(\$object, " . ( var_export($name, true) ) . ");\n                \$property->setAccessible(true);\n                \$data[" . (var_export($name, true)) . "] = \$property->getValue(\$object);\n";
+                        }
+                    }
+                    echo "        break;\n    }\n";
+                }
+                echo "    return \$data;\n}\n";
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -361,6 +398,29 @@ namespace {
         }
     }
 
+    /** 
+     *  Template class generated from MaxLength.tpl
+     */
+    class class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo  $self->result  . " = strlen(" . ($input) . ") <= " . ($args[0]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
 }
 
 namespace crodas\Validate {
@@ -380,6 +440,8 @@ namespace crodas\Validate {
                 'error' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
                 'optional.tpl' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
                 'optional' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
+                'minlength.tpl' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
+                'minlength' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
                 'not.tpl' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
                 'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
                 'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
@@ -400,6 +462,8 @@ namespace crodas\Validate {
                 'nowhitespace' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
                 'email.tpl' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'email' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
+                'maxlength.tpl' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
+                'maxlength' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {

@@ -2,8 +2,9 @@
     "name": "crodas/validate",
     "description": "Validation library",
     "require": {
+        "crodas/watch-files": "*",
         "crodas/path": "*",
-        "crodas/notoj": "*",
+        "crodas/notoj": "~0.1",
         "crodas/simple-view-engine": "*"
     },
     "license": "BSD",

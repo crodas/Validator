@@ -3,7 +3,7 @@
     {{ $rule->toCode($input) }}
     if ({{$rule->result}}) {
         {{$self->result}} = true;
-        exit_{{sha1($self->result)}};
+        goto exit_{{sha1($self->result)}};
     }
 @end
 exit_{{sha1($self->result)}}:

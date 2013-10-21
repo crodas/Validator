@@ -67,6 +67,7 @@ class Rule
     {
         $self  = $this;
         $args  = $this->args;
+        $this->msg = str_replace('$value', $input, $this->msg);
         $code  = Templates::get($this->type)
             ->render(compact('self', 'input', 'args'), true);
         $code .= Templates::get('error')

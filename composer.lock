@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "95c7c8c225ab38c5b150313784c9edaa",
+    "hash": "66a47ec834ba525ebb3a58fa05748541",
     "packages": [
         {
             "name": "crodas/notoj",
-            "version": "dev-master",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/Notoj.git",
-                "reference": "8a1265c367e4a7cb6d0fbfbbf1c4977bc181e343"
+                "reference": "ba9125079764a0edd1cd4e955646d95df29824c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Notoj/zipball/8a1265c367e4a7cb6d0fbfbbf1c4977bc181e343",
-                "reference": "8a1265c367e4a7cb6d0fbfbbf1c4977bc181e343",
+                "url": "https://api.github.com/repos/crodas/Notoj/zipball/ba9125079764a0edd1cd4e955646d95df29824c1",
+                "reference": "ba9125079764a0edd1cd4e955646d95df29824c1",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,7 @@
                 }
             ],
             "description": "Annotation parser. Uses reflection and provides cache out of the box.",
-            "time": "2013-08-08 05:04:46"
+            "time": "2013-10-21 04:39:53"
         },
         {
             "name": "crodas/path",
@@ -73,41 +73,6 @@
             ],
             "description": "Library to manipulate paths",
             "time": "2013-09-24 07:12:15"
-        }
-    ],
-    "packages-dev": [
-        {
-            "name": "crodas/artifex",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/crodas/Artifex.git",
-                "reference": "b68c50949bc4d5c35ec6396684a8f4f67a689971"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Artifex/zipball/b68c50949bc4d5c35ec6396684a8f4f67a689971",
-                "reference": "b68c50949bc4d5c35ec6396684a8f4f67a689971",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Artifex": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "César D. Rodas",
-                    "email": "crodas@php.net"
-                }
-            ],
-            "description": "Macros on steroids. The easiest way of generating code.",
-            "time": "2013-09-06 03:39:06"
         },
         {
             "name": "crodas/simple-view-engine",
@@ -115,12 +80,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleView.git",
-                "reference": "e4e9b9a74fa089434dc713fff7709e8f33fa9b05"
+                "reference": "33748174e01b7ddc5920131092e7e1fdfa848a28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/e4e9b9a74fa089434dc713fff7709e8f33fa9b05",
-                "reference": "e4e9b9a74fa089434dc713fff7709e8f33fa9b05",
+                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/33748174e01b7ddc5920131092e7e1fdfa848a28",
+                "reference": "33748174e01b7ddc5920131092e7e1fdfa848a28",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +110,7 @@
                 }
             ],
             "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
-            "time": "2013-10-13 07:33:07"
+            "time": "2013-10-19 05:30:09"
         },
         {
             "name": "crodas/watch-files",
@@ -153,16 +118,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/WatchFiles.git",
-                "reference": "cabadaf0c5ae946a415814030822c6c3cfba7d6f"
+                "reference": "330ed4ddaca59a6be540b19d979d4ebe08526f36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/cabadaf0c5ae946a415814030822c6c3cfba7d6f",
-                "reference": "cabadaf0c5ae946a415814030822c6c3cfba7d6f",
+                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/330ed4ddaca59a6be540b19d979d4ebe08526f36",
+                "reference": "330ed4ddaca59a6be540b19d979d4ebe08526f36",
                 "shasum": ""
             },
             "require": {
-                "crodas/artifex": "*",
                 "crodas/path": "*"
             },
             "type": "library",
@@ -182,7 +146,7 @@
                 }
             ],
             "description": "Watch files and directories for changes",
-            "time": "2013-08-30 18:55:03"
+            "time": "2013-10-20 07:43:43"
         },
         {
             "name": "symfony/console",
@@ -284,6 +248,9 @@
             "homepage": "http://symfony.com",
             "time": "2013-09-19 09:47:34"
         }
+    ],
+    "packages-dev": [
+
     ],
     "aliases": [
 

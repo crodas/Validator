@@ -17,7 +17,7 @@ function validate($rule, $input)
 {
     switch ($rule) {
         @foreach ($funcmap as $name => $func)
-        case "{{{$name}}}":
+        case {{var_export($name, true)}}:
             $valid = {{$func}}($input);
             break;
         @end
@@ -27,3 +27,27 @@ function validate($rule, $input)
     return $valid;
 
 }
+
+@if (count($classes) > 0)
+function get_object_properties($object)
+{
+    $class = strtolower(get_class($object));
+    $data  = [];
+    @foreach ($classes as $name => $props)
+    switch ($class) {
+    case {{var_export(strtolower($name), true)}}:
+        @foreach($props as $name => $is_public)
+            @if ($is_public)
+                $data[{{var_export($name, true)}}] = $object->{{$name}};
+            @else
+                $property = new \ReflectionProperty($object, {{ var_export($name, true) }});
+                $property->setAccessible(true);
+                $data[{{var_export($name, true)}}] = $property->getValue($object);
+            @end
+        @end
+        break;
+    }
+    @end
+    return $data;
+}
+@end
