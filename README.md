@@ -49,7 +49,7 @@ class User
 
 To validate an object you would have to do something like this.
 
-```
+```php
 $errors = $val->validate(new User);
 if (!empty($errors)) {
   foreach ($errors as $field => $exception) {
