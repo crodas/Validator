@@ -17,7 +17,7 @@ function validate($rule, $input)
 {
     switch ($rule) {
         @foreach ($funcmap as $name => $func)
-        case {{var_export($name, true)}}:
+        case {{@$name}}:
             $valid = {{$func}}($input);
             break;
         @end
@@ -35,14 +35,14 @@ function get_object_properties($object)
     $data  = [];
     @foreach ($classes as $name => $props)
     switch ($class) {
-    case {{var_export(strtolower($name), true)}}:
+    case {{@strtolower($name)}}:
         @foreach($props as $name => $is_public)
             @if ($is_public)
-                $data[{{var_export($name, true)}}] = $object->{{$name}};
+                $data[{{@$name}}] = $object->{{$name}};
             @else
-                $property = new \ReflectionProperty($object, {{ var_export($name, true) }});
+                $property = new \ReflectionProperty($object, {{ @$name }});
                 $property->setAccessible(true);
-                $data[{{var_export($name, true)}}] = $property->getValue($object);
+                $data[{{@$name}}] = $property->getValue($object);
             @end
         @end
         break;

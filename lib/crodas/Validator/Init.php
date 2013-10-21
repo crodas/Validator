@@ -120,13 +120,13 @@ class Init
             }
         }
 
-        $cache->watchFiles($files);
-        $cache->watchDirs($dirs);
-        $cache->watch();
-
         $builder->mapClass($classes);
         $builder->writeTo($this->temp);
         require $this->temp;
+
+        $cache->watchFiles($files);
+        $cache->watchDirs($dirs);
+        $cache->watch();
     }
 
     public function validate($object)

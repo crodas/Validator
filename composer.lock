@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "66a47ec834ba525ebb3a58fa05748541",
+    "hash": "44827a129b63e642aa3957aa4672c2ae",
     "packages": [
         {
             "name": "crodas/notoj",
@@ -80,12 +80,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleView.git",
-                "reference": "33748174e01b7ddc5920131092e7e1fdfa848a28"
+                "reference": "0add54c6e0e1c8f42659b96e63b13da595b62d3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/33748174e01b7ddc5920131092e7e1fdfa848a28",
-                "reference": "33748174e01b7ddc5920131092e7e1fdfa848a28",
+                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/0add54c6e0e1c8f42659b96e63b13da595b62d3a",
+                "reference": "0add54c6e0e1c8f42659b96e63b13da595b62d3a",
                 "shasum": ""
             },
             "require": {
@@ -110,7 +110,7 @@
                 }
             ],
             "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
-            "time": "2013-10-19 05:30:09"
+            "time": "2013-10-21 18:33:39"
         },
         {
             "name": "crodas/watch-files",

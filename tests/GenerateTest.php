@@ -29,6 +29,25 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertEquals(count($errors), 1);
     }
 
+    public function testAnnotationAndDates()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->foo  = 'something';
+        $foo->age  = 19;
+        $foo->date = "30-09-2013";
+        $errors = $val->validate($foo);
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['date']));
+        $this->assertTrue(strpos($errors['date']->getMessage(), 'format') > 0);
+        $this->assertEquals(count($errors), 1);
+
+        $foo->date     = NULL;
+        $foo->any_date = "30-09-2013";
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
+    }
+
     public function testAnnotationRaw()
     {
         $val = get_validator();

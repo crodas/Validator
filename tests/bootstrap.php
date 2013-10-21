@@ -3,6 +3,10 @@
 require __DIR__ . "/../vendor/autoload.php";
 require __DIR__ . "/../tests/classes/Class1.php";
 
+foreach(glob(__DIR__ . '/tmp/*') as $file) {
+    unlink($file);
+}
+
 function get_validator()
 {
     static $val;

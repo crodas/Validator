@@ -11,6 +11,12 @@ class Class1
      */
     public $foo;
 
+    /** @Optional @Date(['Y-m-d'], 'Invalid date format') */
+    public $date;
+
+    /** @Optional @Date */
+    public $any_date;
+
     /** @AnyOf([
      *      @Between([18, 25]), 
      *      @Between([30, 50])

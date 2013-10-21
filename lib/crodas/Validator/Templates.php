@@ -71,7 +71,10 @@ namespace {
             }
             if ($self->msg) {
                 echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(_(\"";
-                echo htmlentities($self->msg, ENT_QUOTES, 'UTF-8', false);
+                $__temporary = $self->msg;
+                if (!empty($__temporary)) {
+                    echo htmlentities($__temporary, ENT_QUOTES, 'UTF-8', false);
+                }
                 echo "\"));\n}\n";
             }
 
@@ -119,7 +122,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo  $self->result  . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
+            echo $self->result . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -144,7 +147,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n" . ($self->result) . " = !" . ($self->result) . ";\n";
 
@@ -217,7 +220,7 @@ namespace {
             }
             echo $self->result . " = true;\n";
             foreach($args as $rule) {
-                echo "    " . ( $rule->toCode($input) ) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 
@@ -267,9 +270,43 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    " . ( $rule->toCode($input) ) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Date.tpl
+     */
+    class class_eeac73f6af19611258f68e085a761dea60b94970 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "if (" . ($input) . " instanceof \\DateTime) {\n    " . ($self->result) . " = true;\n} elseif (!is_string(" . ($input) . ")) {\n    " . ($self->result) . " = false;\n} else {\n";
+            if (empty($args[0])) {
+                echo "        " . ($self->result) . " = false !== strtotime(" . ($input) . ");\n";
+            }
+            else {
+                echo "        \$dateFromFormat = \\DateTime::createFromFormat(";
+                var_export($args[0]);
+                echo ", " . ($input) . ");\n        " . ($self->result) . " = \$dateFromFormat\n                && " . ($input) . " === date(";
+                var_export($args[0]);
+                echo ", \$dateFromFormat->getTimestamp());\n";
+            }
+            echo "}\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -292,7 +329,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo  $self->result  . " = " . ($input) . " >= " . ($args[0]) . " && " . ($input) . " <= " . ($args[1]) . ";\n";
+            echo $self->result . " = " . ($input) . " >= " . ($args[0]) . " && " . ($input) . " <= " . ($args[1]) . ";\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -325,19 +362,29 @@ namespace {
             }
             echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
             foreach($funcmap as $name => $func) {
-                echo "        case " . (var_export($name, true)) . ":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
+                echo "        case ";
+                var_export($name);
+                echo ":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
             }
             echo "        default:\n            throw new \\Exception(\"Cannot find validator for {\$rule}\");\n    }\n    return \$valid;\n\n}\n\n";
             if (count($classes) > 0) {
                 echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n";
                 foreach($classes as $name => $props) {
-                    echo "    switch (\$class) {\n    case " . (var_export(strtolower($name), true)) . ":\n";
+                    echo "    switch (\$class) {\n    case ";
+                    var_export(strtolower($name));
+                    echo ":\n";
                     foreach($props as $name => $is_public) {
                         if ($is_public) {
-                            echo "                \$data[" . (var_export($name, true)) . "] = \$object->" . ($name) . ";\n";
+                            echo "                \$data[";
+                            var_export($name);
+                            echo "] = \$object->" . ($name) . ";\n";
                         }
                         else {
-                            echo "                \$property = new \\ReflectionProperty(\$object, " . ( var_export($name, true) ) . ");\n                \$property->setAccessible(true);\n                \$data[" . (var_export($name, true)) . "] = \$property->getValue(\$object);\n";
+                            echo "                \$property = new \\ReflectionProperty(\$object, ";
+                            var_export($name);
+                            echo ");\n                \$property->setAccessible(true);\n                \$data[";
+                            var_export($name);
+                            echo "] = \$property->getValue(\$object);\n";
                         }
                     }
                     echo "        break;\n";
@@ -412,7 +459,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo  $self->result  . " = strlen(" . ($input) . ") <= " . ($args[0]) . ";\n";
+            echo $self->result . " = strlen(" . ($input) . ") <= " . ($args[0]) . ";\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -454,6 +501,8 @@ namespace crodas\Validator {
                 'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
                 'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
                 'anyof' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
+                'date.tpl' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
+                'date' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
                 'between.tpl' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
                 'between' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
                 'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
