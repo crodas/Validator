@@ -340,9 +340,9 @@ namespace {
                             echo "                \$property = new \\ReflectionProperty(\$object, " . ( var_export($name, true) ) . ");\n                \$property->setAccessible(true);\n                \$data[" . (var_export($name, true)) . "] = \$property->getValue(\$object);\n";
                         }
                     }
-                    echo "        break;\n    }\n";
+                    echo "        break;\n";
                 }
-                echo "    return \$data;\n}\n";
+                echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
             }
 
             if ($return) {

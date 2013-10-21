@@ -46,8 +46,10 @@ function get_object_properties($object)
             @end
         @end
         break;
-    }
     @end
+    default:
+        throw new \Exception("Cannot find a validations for {$class} object");
+    }
     return $data;
 }
 @end
