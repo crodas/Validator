@@ -37,6 +37,7 @@
 namespace crodas\Validator;
 
 use Notoj\Dir as DirParser;
+use WatchFiles\Watch;
 
 class Init
 {
@@ -62,9 +63,17 @@ class Init
         if (is_callable($this->callback)) {
             return;
         }
+
+        $cache = new Watch($this->temp . '.cache');
+        if ($cache->isWatching() && ($this->prod || !$cache->hasChanged())) {
+            require $this->temp;
+            return;
+        }
+
         $parser  = new DirParser($this->dir);
         $builder = new Builder; 
         $classes = [];
+        $files   = $dirs = [];
         $builder->setNamespace($this->ns);
         $annotations = $parser->getAnnotations();
         foreach ($annotations->get('Validate') as $object) {
@@ -106,8 +115,15 @@ class Init
                     }
                 }
                 $classes[$object['class']] = ['file' => $object['file'], 'props' => $props];
+                $files[] = $object['file'];
+                $dirs[]  = dirname($object['file']);
             }
         }
+
+        $cache->watchFiles($files);
+        $cache->watchDirs($dirs);
+        $cache->watch();
+
         $builder->mapClass($classes);
         $builder->writeTo($this->temp);
         require $this->temp;
