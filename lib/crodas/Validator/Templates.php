@@ -430,6 +430,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Bool.tpl
+     */
+    class class_ceb2e9f7134390fa5010bc47de63df845c4b22d4 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_bool(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Email.tpl
      */
     class class_6a3c3199ac12f05b87a72f489af82723d8e98693 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -516,6 +539,8 @@ namespace crodas\Validator {
                 'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
                 'nowhitespace' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
+                'bool.tpl' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
+                'bool' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
                 'email.tpl' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'email' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'maxlength.tpl' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',

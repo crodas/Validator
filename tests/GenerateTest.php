@@ -48,6 +48,26 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(empty($errors));
     }
 
+    public function testAnnotationAndBool()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->foo  = 'something';
+        $foo->age  = 19;
+        $foo->enabled = "yes";
+        $errors = $val->validate($foo);
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['enabled']));
+
+        $foo->enabled = false;
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
+
+        $foo->enabled = true;
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
+    }
+
     public function testAnnotationRaw()
     {
         $val = get_validator();

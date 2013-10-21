@@ -17,6 +17,9 @@ class Class1
     /** @Optional @Date */
     public $any_date;
 
+    /** @Optional @Bool */
+    public $enabled;
+
     /** @AnyOf([
      *      @Between([18, 25]), 
      *      @Between([30, 50])
