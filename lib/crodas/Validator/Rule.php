@@ -63,15 +63,15 @@ class Rule
         return $weight;
     }
 
-    public function toCode($input)
+    public function toCode($input, $parent = NULL)
     {
         $self  = $this;
         $args  = $this->args;
         $this->msg = str_replace('$value', $input, $this->msg);
         $code  = Templates::get($this->type)
-            ->render(compact('self', 'input', 'args'), true);
+            ->render(compact('self', 'input', 'args', 'parent'), true);
         $code .= Templates::get('error')
-            ->render(compact('self'), true);
+            ->render(compact('self', 'parent'), true);
         return $code;
     }
 }

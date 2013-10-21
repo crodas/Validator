@@ -42,15 +42,15 @@ class Groups extends Rule
 {
     protected $canBeSimplified = false;
 
-    public function toCode($var)
+    public function toCode($var, $parent = NULL)
     {
         if (count($this->args) == 1 && $this->canBeSimplified) {
-            return $this->args[0]->toCode($var);
+            return $this->args[0]->toCode($var, $parent);
         }
         usort($this->args, function($a, $b) {
             return $a->GetWeight() - $b->getWeight();
         });
-        return parent::toCode($var);
+        return parent::toCode($var, $parent);
     }
 }
 

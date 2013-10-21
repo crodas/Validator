@@ -99,7 +99,14 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "if (empty(" . ($input) . ")) {\n    return true;\n}\n" . ($self->result) . " = true;\n";
+            echo $self->result . " = true;\nif (empty(" . ($input) . ")) {\n";
+            if (!empty($parent)) {
+                echo "        goto exit_" . (sha1($parent->result)) . ";\n";
+            }
+            else {
+                echo "        return true;\n";
+            }
+            echo "}\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -147,7 +154,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n" . ($self->result) . " = !" . ($self->result) . ";\n";
 
@@ -220,7 +227,7 @@ namespace {
             }
             echo $self->result . " = true;\n";
             foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 
@@ -270,7 +277,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
             echo "exit_" . (sha1($self->result)) . ":\n";
 

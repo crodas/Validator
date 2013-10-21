@@ -1,6 +1,6 @@
 {{$self->result}} = false;
 @foreach ($args as $rule) 
-    {{ $rule->toCode($input) }}
+    {{ $rule->toCode($input, $self) }}
     if ({{$rule->result}}) {
         {{$self->result}} = true;
         goto exit_{{sha1($self->result)}};
