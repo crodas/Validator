@@ -21,7 +21,7 @@ How to use it
 
 The first thing you have to do is create the Validator object.
 
-```
+```php
 require "vendor/autoload.php";
 
 $val = new crodas\Validator\Init("/classes/", "/tmp/foo.php");
@@ -31,7 +31,7 @@ The validator object would look for classes defined inside `/classes/` and its s
 
 All the validation rules are defined used Annotatios, it should be like this
 
-```
+```php
 /** @Validate */
 class User
 {
