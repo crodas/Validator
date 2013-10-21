@@ -68,10 +68,13 @@ class Rule
         $self  = $this;
         $args  = $this->args;
         $this->msg = str_replace('$value', $input, $this->msg);
-        $code  = Templates::get($this->type)
+        $code  = "\n/* {$this->type} {{{ */\n";
+        $code .= Templates::get($this->type)
             ->render(compact('self', 'input', 'args', 'parent'), true);
         $code .= Templates::get('error')
             ->render(compact('self', 'parent'), true);
+        $code .= "/* }}} */\n";
+
         return $code;
     }
 }
