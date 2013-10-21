@@ -1,4 +1,4 @@
-Validator
+Validator [![Build Status](https://travis-ci.org/crodas/Validator.png?branch=master)](https://travis-ci.org/crodas/Validator)
 =========
 
 Generate static validators to validate your data in PHP. *Static* means that the rules are defined offline, then the library generates code to run the validations. We don't run any checking at runtime.
@@ -49,7 +49,7 @@ class User
 
 To validate an object you would have to do something like this.
 
-```
+```php
 $errors = $val->validate(new User);
 if (!empty($errors)) {
   foreach ($errors as $field => $exception) {
