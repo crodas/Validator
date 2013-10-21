@@ -1,5 +1,5 @@
 {
-    "name": "crodas/validate",
+    "name": "crodas/validator",
     "description": "Validation library",
     "require": {
         "crodas/watch-files": "*",
