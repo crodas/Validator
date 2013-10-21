@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 Validate                                                     |
+  | Copyright (c) 2013 Validator                                                     |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -34,53 +34,8 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate;
+namespace crodas\Validator\Rule;
 
-class ValidateFunction
+class AllOf extends Groups
 {
-    protected $rules; 
-    protected $parent;
-    public $result;
-
-    public function __construct($parent)
-    {
-        $this->parent = $parent;
-    }
-
-    public function ruleExists($name)
-    {
-        try {
-            Templates::get($name);
-            return true;
-        } catch (\Exception $e) {
-            return false;
-        }
-    }
-
-    public function addRule($name, $args = [], $error = '')
-    {
-        if (is_callable($args)) {
-            $tmp = new self($this->parent);
-            $args($tmp);
-            $args = $tmp->rules;
-        }
-        $this->rules[] = $this->parent->rule($name, $args, $error);
-        return $this;
-    }
-
-    public function toCode($var)
-    {
-        if (count($this->rules) > 1) {
-            $body = $this->parent->rule('allOf', $this->rules);
-        } else {
-            $body = $this->rules[0];
-        }
-        $body = $this->parent->rule('allOf', $this->rules);
-        $code = $body->toCode($var);
-        $this->result = $body->result;
-
-        return $code;
-    }
-
 }
-

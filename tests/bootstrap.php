@@ -7,7 +7,7 @@ function get_validator()
 {
     static $val;
     if (empty($val)) {
-        $val = new crodas\Validate\Init(__DIR__ . "/classes/", __DIR__ . "/tmp/foo.php");
+        $val = new crodas\Validator\Init(__DIR__ . "/classes/", __DIR__ . "/tmp/foo.php");
     }
     return $val;
 }

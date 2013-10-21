@@ -44,7 +44,7 @@ class GenerateTest extends \phpunit_framework_testcase
 
     public function testGenerate()
     {
-        $validator = new crodas\Validate\Builder;
+        $validator = new crodas\Validator\Builder;
         $validator->setNamespace("test\\formValidator");
         
         $rules = $validator->createTest('negative')

@@ -7,7 +7,7 @@
 
 namespace {
 
-    class base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
         protected $parent;
         protected $child;
@@ -58,7 +58,7 @@ namespace {
     /** 
      *  Template class generated from Error.tpl
      */
-    class class_873c1a91cea8cbb245abe554d24748c8fe4e84b9 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_873c1a91cea8cbb245abe554d24748c8fe4e84b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -85,7 +85,7 @@ namespace {
     /** 
      *  Template class generated from Optional.tpl
      */
-    class class_73177f083ce4946c03c09151e30c22c4883d8a97 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_73177f083ce4946c03c09151e30c22c4883d8a97 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -108,7 +108,7 @@ namespace {
     /** 
      *  Template class generated from MinLength.tpl
      */
-    class class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -131,7 +131,7 @@ namespace {
     /** 
      *  Template class generated from Not.tpl
      */
-    class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -158,7 +158,7 @@ namespace {
     /** 
      *  Template class generated from Alnum.tpl
      */
-    class class_fda5329c4d3473f86f472bff037149dac04a7069 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_fda5329c4d3473f86f472bff037149dac04a7069 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -181,7 +181,7 @@ namespace {
     /** 
      *  Template class generated from Positive.tpl
      */
-    class class_a02f0cae0d7ce37d38d758f9164c2cdaad435964 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_a02f0cae0d7ce37d38d758f9164c2cdaad435964 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -204,7 +204,7 @@ namespace {
     /** 
      *  Template class generated from AllOf.tpl
      */
-    class class_a11236d6e933f6694cf823c635f715839924f36a extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_a11236d6e933f6694cf823c635f715839924f36a extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -231,7 +231,7 @@ namespace {
     /** 
      *  Template class generated from Length.tpl
      */
-    class class_87373bac58cc91a097cde8b6f75577026c5bdf85 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_87373bac58cc91a097cde8b6f75577026c5bdf85 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -254,7 +254,7 @@ namespace {
     /** 
      *  Template class generated from AnyOf.tpl
      */
-    class class_f4f0cb85093b6835d6eb2a544e6065572b50cab6 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_f4f0cb85093b6835d6eb2a544e6065572b50cab6 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -281,7 +281,7 @@ namespace {
     /** 
      *  Template class generated from Between.tpl
      */
-    class class_9f088ed2c64f7697e44a25fcb3616547625c8713 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_9f088ed2c64f7697e44a25fcb3616547625c8713 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -304,7 +304,7 @@ namespace {
     /** 
      *  Template class generated from Body.tpl
      */
-    class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -355,7 +355,7 @@ namespace {
     /** 
      *  Template class generated from NoWhitespace.tpl
      */
-    class class_caea816a5db6e6c3998cf366128c6cf4cbec0c18 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_caea816a5db6e6c3998cf366128c6cf4cbec0c18 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -378,7 +378,7 @@ namespace {
     /** 
      *  Template class generated from Email.tpl
      */
-    class class_6a3c3199ac12f05b87a72f489af82723d8e98693 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_6a3c3199ac12f05b87a72f489af82723d8e98693 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -401,7 +401,7 @@ namespace {
     /** 
      *  Template class generated from MaxLength.tpl
      */
-    class class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4 extends base_template_ccee76bf6d3440b3ca1ee932ed0a7ef971047ccf
+    class class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -423,7 +423,7 @@ namespace {
 
 }
 
-namespace crodas\Validate {
+namespace crodas\Validator {
 
     class Templates
     {

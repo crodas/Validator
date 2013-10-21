@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 Validate                                                     |
+  | Copyright (c) 2013 Validator                                                     |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -34,16 +34,9 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate\Rule;
+namespace crodas\Validator\Rule;
 
-use crodas\Validate\Rule;
-
-class NoWhitespace extends Rule
+class Not extends Groups
 {
-    public function getWeight()
-    {
-        // preg_match are sort of expensive :-)
-        return 20;
-    }
+    protected $canBeSimplified = false;
 }
-

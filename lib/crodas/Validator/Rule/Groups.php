@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 Validate                                                     |
+  | Copyright (c) 2013 Validator                                                     |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -34,8 +34,24 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate\Rule;
+namespace crodas\Validator\Rule;
 
-class AllOf extends Groups
+use crodas\Validator\Rule;
+
+class Groups extends Rule
 {
+    protected $canBeSimplified = false;
+
+    public function toCode($var)
+    {
+        if (count($this->args) == 1 && $this->canBeSimplified) {
+            return $this->args[0]->toCode($var);
+        }
+        usort($this->args, function($a, $b) {
+            return $a->GetWeight() - $b->getWeight();
+        });
+        return parent::toCode($var);
+    }
 }
+
+

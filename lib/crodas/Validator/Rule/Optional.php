@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 Validate                                                     |
+  | Copyright (c) 2013 Validator                                                     |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -34,44 +34,15 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate;
+namespace crodas\Validator\Rule;
 
-class Rule
+use crodas\Validator\Rule;
+
+class Optional extends Rule
 {
-    public    $result;
-    public    $msg;
-    protected $type;
-    protected $args;
-
-    public function __construct($type, Array $args, $msg='')
-    {
-        $this->result = '$result_' . uniqid(true);
-        $this->type   = $type;
-        $this->msg    = $msg;
-        $this->args   = $args;
-    }
-
     public function getWeight()
     {
-        $weight = 10;
-        foreach ($this->args as $input) {
-            $weight += 1;
-            if ($input instanceof self) {
-                $weight += $input->getWeight();
-            }
-        }
-        return $weight;
-    }
-
-    public function toCode($input)
-    {
-        $self  = $this;
-        $args  = $this->args;
-        $this->msg = str_replace('$value', $input, $this->msg);
-        $code  = Templates::get($this->type)
-            ->render(compact('self', 'input', 'args'), true);
-        $code .= Templates::get('error')
-            ->render(compact('self'), true);
-        return $code;
+        // This should be the first rule
+        return -0xfffff;
     }
 }

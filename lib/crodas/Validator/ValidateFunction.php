@@ -34,74 +34,53 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validate;
+namespace crodas\Validator;
 
-use crodas\SimpleView\FixCode;
-use crodas\File;
-
-class Builder
+class ValidateFunction
 {
-    protected $functions;
-    protected $map;
-    protected $ns;
-    protected $classes = [];
+    protected $rules; 
+    protected $parent;
+    public $result;
 
-    public function createTest($name)
+    public function __construct($parent)
     {
-        $fnc = "validate_" . sha1($name);
-        $this->map[$name] = $fnc;
-        $this->functions[$fnc] = new ValidateFunction($this);
-        return $this->functions[$fnc];
+        $this->parent = $parent;
     }
 
-    public function setNamespace($ns)
+    public function ruleExists($name)
     {
-        if ($ns !== NULL && !preg_match('/^([a-z][a-z0-9_]*\\\\?)+$/i', $ns)) {
-            throw new \RuntimeException("{$ns} is not a valid namespace");
+        try {
+            Templates::get($name);
+            return true;
+        } catch (\Exception $e) {
+            return false;
         }
-        $this->ns = $ns;
+    }
 
+    public function addRule($name, $args = [], $error = '')
+    {
+        if (is_callable($args)) {
+            $tmp = new self($this->parent);
+            $args($tmp);
+            $args = $tmp->rules;
+        }
+        $this->rules[] = $this->parent->rule($name, $args, $error);
         return $this;
     }
 
-    public function rule($name, Array $args = [], $msg = '')
+    public function toCode($var)
     {
-        $class = __NAMESPACE__ . "\\Rule\\" . ucfirst($name);
-        if (class_exists($class)) {
-            return new $class($name, $args, $msg);
+        if (count($this->rules) > 1) {
+            $body = $this->parent->rule('allOf', $this->rules);
+        } else {
+            $body = $this->rules[0];
         }
-        return new Rule($name, $args, $msg);
+        $body = $this->parent->rule('allOf', $this->rules);
+        $code = $body->toCode($var);
+        $this->result = $body->result;
+
+        return $code;
     }
 
-    public function __toString()
-    {
-        $var       = '$var_' . uniqid(true);
-        $funcmap   = $this->map;
-        $functions = $this->functions;
-        $namespace = $this->ns;
-        $classes   = $this->classes;
-        $code      = Templates::get('body')
-            ->render(compact(
-                'namespace','funcmap', 'classes',
-                'body', 'name', 'var', 'functions'
-            ), true);
-
-        return FixCode::fix($code);
-    }
-
-    public function mapClass(Array $map)
-    {
-        foreach ($map as $name => $class) {
-            if (Empty($class['props']) || !is_array($class['props'])) {
-                throw new \Exception("Invalid class map for $name");
-            }
-            $this->classes[$name] = $class['props'];
-        }
-        return $this;
-    }
-
-    public function writeTo($file)
-    {
-        return File::write($file, (string)$this);
-    }
 }
+
