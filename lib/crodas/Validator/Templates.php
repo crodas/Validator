@@ -260,6 +260,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Min.tpl
+     */
+    class class_5c60ab5456fdb25f6510d0c086f72de82c9315b8 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = " . ($input) . " >= " . ($args[0]) . ";\n\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from AllOf.tpl
      */
     class class_a11236d6e933f6694cf823c635f715839924f36a extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -500,6 +523,29 @@ namespace {
                 ob_start();
             }
             echo $self->result . " = !empty(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Max.tpl
+     */
+    class class_8dafd4fcbb5866963529085f8e3a95e41042e10d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = " . ($input) . " <= " . ($args[0]) . ";\n\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -803,6 +849,42 @@ namespace crodas\Validator {
 
     class Templates
     {
+        public static function getAll()
+        {
+            return array (
+                0 => 'error',
+                1 => 'optional',
+                2 => 'minlength',
+                3 => 'not',
+                4 => 'alnum',
+                5 => 'charset',
+                6 => 'creditcard',
+                7 => 'positive',
+                8 => 'min',
+                9 => 'allof',
+                10 => 'length',
+                11 => 'countrycode',
+                12 => 'alpha',
+                13 => 'anyof',
+                14 => 'integer',
+                15 => 'date',
+                16 => 'between',
+                17 => 'when',
+                18 => 'notempty',
+                19 => 'max',
+                20 => 'array',
+                21 => 'object',
+                22 => 'body',
+                23 => 'nowhitespace',
+                24 => 'bool',
+                25 => 'rule',
+                26 => 'email',
+                27 => 'maxlength',
+                28 => 'writable',
+                29 => 'xdigit',
+            );
+        }
+
         public static function exec($name, Array $context = array(), Array $global = array())
         {
             $tpl = self::get($name);
@@ -828,6 +910,8 @@ namespace crodas\Validator {
                 'creditcard' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
                 'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
                 'positive' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
+                'min.tpl' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
+                'min' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
                 'allof.tpl' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
                 'allof' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
                 'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
@@ -848,6 +932,8 @@ namespace crodas\Validator {
                 'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
                 'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
                 'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
+                'max.tpl' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
+                'max' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
                 'array.tpl' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
                 'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
                 'object.tpl' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',

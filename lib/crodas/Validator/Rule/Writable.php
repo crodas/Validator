@@ -36,6 +36,7 @@
 */
 namespace crodas\Validator\Rule;
 
-class Date extends NonScalar
+class Writable extends NonScalar
 {
 }
+
