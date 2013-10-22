@@ -202,9 +202,9 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "\$expected = ";
+            echo $self->result . " = false;\nif (is_scalar(" . ($input) . ")) {\n    \$expected = ";
             var_export($args);
-            echo ";\n\$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n" . ($self->result) . " = in_array(\$encoding, \$expected, true);\n";
+            echo ";\n    \$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n    " . ($self->result) . " = in_array(\$encoding, \$expected, true);\n}\n";
 
             if ($return) {
                 return ob_get_clean();
