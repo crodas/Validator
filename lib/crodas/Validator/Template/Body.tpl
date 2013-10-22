@@ -34,8 +34,8 @@ function get_object_properties($object)
 {
     $class = strtolower(get_class($object));
     $data  = [];
-    @foreach ($classes as $name => $props)
     switch ($class) {
+    @foreach ($classes as $name => $props)
     case {{@strtolower($name)}}:
         @foreach($props as $name => $is_public)
             @if ($is_public)

@@ -310,6 +310,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from CountryCode.tpl
+     */
+    class class_ef15a1b099f9fef8637467be587b15e05d10bf46 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$countryCodeList = array(\n    'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW',\n    'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN',\n    'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG',\n    'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ',\n    'DE', 'DJ', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ',\n    'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM',\n    'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT',\n    'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO',\n    'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB',\n    'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF',\n    'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV',\n    'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR',\n    'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS',\n    'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE',\n    'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX',\n    'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR',\n    'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG',\n    'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW'\n);\n\n" . ($self->result) . " = in_array(strtoupper(" . ($input) . "), \$countryCodeList);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Alpha.tpl
      */
     class class_63a832d9e94dc14f656368039d30aa1f8d6813b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -538,9 +561,9 @@ namespace {
             }
             echo "        default:\n            throw new \\Exception(\"Cannot find validator for {\$rule}\");\n    }\n    return \$valid;\n\n}\n\n";
             if (count($classes) > 0) {
-                echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n";
+                echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n    switch (\$class) {\n";
                 foreach($classes as $name => $props) {
-                    echo "    switch (\$class) {\n    case ";
+                    echo "    case ";
                     var_export(strtolower($name));
                     echo ":\n";
                     foreach($props as $name => $is_public) {
@@ -772,6 +795,8 @@ namespace crodas\Validator {
                 'allof' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
                 'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
                 'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
+                'countrycode.tpl' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
+                'countrycode' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
                 'alpha.tpl' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
                 'alpha' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
                 'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',

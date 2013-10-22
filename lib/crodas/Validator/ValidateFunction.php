@@ -38,7 +38,7 @@ namespace crodas\Validator;
 
 class ValidateFunction
 {
-    protected $rules; 
+    protected $rules;
     protected $parent;
     public $result;
 
@@ -70,6 +70,12 @@ class ValidateFunction
 
     public function toCode($var)
     {
+        if (empty($this->rules)) {
+            $body = $this->parent->rule('allOf', []);
+            $code = $body->toCode($var);
+            return $code;
+        }
+
         if (count($this->rules) > 1) {
             $body = $this->parent->rule('allOf', $this->rules);
         } else {
