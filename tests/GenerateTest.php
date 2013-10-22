@@ -46,6 +46,10 @@ class GenerateTest extends \phpunit_framework_testcase
         $foo->any_date = "30-09-2013";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+
+        $foo->date = new \Datetime;
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
     }
 
     public function testAnnotationAndBool()
@@ -111,6 +115,20 @@ class GenerateTest extends \phpunit_framework_testcase
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['something']));
+    }
+
+    public function testAnnotationWithScalarNonScalar()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->age  = [33];
+        $foo->foo  = ['something'];
+
+        $errors = $val->validate($foo);
+        $this->assertTrue(!empty($errors));
+        $this->assertEquals(count($errors), 2);
+        $this->assertTrue(!empty($errors['age']));
+        $this->assertTrue(!empty($errors['foo']));
     }
 
     public function testAnnotationRaw()

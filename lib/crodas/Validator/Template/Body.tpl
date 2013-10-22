@@ -7,6 +7,7 @@ namespace {{$namespace}};
 @foreach ($functions as $name => $body)
 function {{$name}} ({{$var}})
 {
+    $is_scalar = is_scalar({{$var}});
     {{$body->toCode($var)}}
     return {{$body->result}};
 }

@@ -202,9 +202,9 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo $self->result . " = false;\nif (is_scalar(" . ($input) . ")) {\n    \$expected = ";
+            echo "\$expected = ";
             var_export($args);
-            echo ";\n    \$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n    " . ($self->result) . " = in_array(\$encoding, \$expected, true);\n}\n";
+            echo ";\n\$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n" . ($self->result) . " = in_array(\$encoding, \$expected, true);\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -528,7 +528,7 @@ namespace {
             }
             echo "\n";
             foreach($functions as $name => $body) {
-                echo "function " . ($name) . " (" . ($var) . ")\n{\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
+                echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(" . ($var) . ");\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
             }
             echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
             foreach($funcmap as $name => $func) {
@@ -607,6 +607,36 @@ namespace {
                 ob_start();
             }
             echo $self->result . " = is_bool(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Rule.tpl
+     */
+    class class_0fe2072b1b0fe661662291c92a97bc421caa1072 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            if ($scalar) {
+                echo "    if (\$is_scalar) {\n";
+                crodas\Validator\Templates::exec($type, $this->context);
+                echo "    } else {\n        " . ($self->result) . " = false;\n    } \n";
+            }
+            else {
+                crodas\Validator\Templates::exec($type, $this->context);
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -764,6 +794,8 @@ namespace crodas\Validator {
                 'nowhitespace' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
                 'bool.tpl' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
                 'bool' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
+                'rule.tpl' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
+                'rule' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
                 'email.tpl' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'email' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'maxlength.tpl' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',

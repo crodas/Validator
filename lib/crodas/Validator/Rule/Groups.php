@@ -36,12 +36,11 @@
 */
 namespace crodas\Validator\Rule;
 
-use crodas\Validator\Rule;
-
-class Groups extends Rule
+class Groups extends NonScalar
 {
     protected $canBeSimplified = true;
     protected $canBeSorted = true;
+    protected $testScalar  = false;
 
     public function toCode($var, $parent = NULL)
     {

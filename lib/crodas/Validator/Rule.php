@@ -42,6 +42,7 @@ class Rule
     public    $msg;
     protected $type;
     protected $args;
+    protected $testScalar = true;
     protected static $inc = 0;
 
     public function __construct($type, Array $args, $msg='')
@@ -66,12 +67,15 @@ class Rule
 
     public function toCode($input, $parent = NULL)
     {
-        $self  = $this;
-        $args  = $this->args;
+        $self   = $this;
+        $args   = $this->args;
+        $type   = $this->type;
+        $scalar = $this->testScalar;
+
         $this->msg = str_replace('$value', $input, $this->msg);
         $code  = "\n/* {$this->type} {{{ */\n";
-        $code .= Templates::get($this->type)
-            ->render(compact('self', 'input', 'args', 'parent'), true);
+        $code .= Templates::get('rule')
+            ->render(compact('self', 'input', 'args', 'parent', 'type', 'scalar'), true);
         $code .= Templates::get('error')
             ->render(compact('self', 'parent'), true);
         $code .= "/* }}} */\n";

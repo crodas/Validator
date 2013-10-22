@@ -36,13 +36,7 @@
 */
 namespace crodas\Validator\Rule;
 
-use crodas\Validator\Rule;
-
-class Optional extends NonScalar
+class Date extends NonScalar
 {
-    public function getWeight()
-    {
-        // This should be the first rule
-        return -0xfffff;
-    }
 }
+

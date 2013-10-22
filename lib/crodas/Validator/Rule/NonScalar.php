@@ -38,11 +38,7 @@ namespace crodas\Validator\Rule;
 
 use crodas\Validator\Rule;
 
-class Optional extends NonScalar
+class NonScalar extends  Rule
 {
-    public function getWeight()
-    {
-        // This should be the first rule
-        return -0xfffff;
-    }
+    protected $testScalar = false;
 }
