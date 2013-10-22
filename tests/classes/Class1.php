@@ -33,6 +33,9 @@ class Class1
     /** @Optional @CreditCard */
     public $cc;
 
+    /** @Optional @Array */
+    public $foobar;
+
     /** @When([@Integer, @Positive, @notEmpty], "It should be a positive number of something not empty") */
     public $something = "something";
 

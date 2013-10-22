@@ -34,78 +34,10 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-namespace crodas\Validator;
+namespace crodas\Validator\Rule;
 
-use crodas\SimpleView\FixCode;
-use crodas\File;
-
-class Builder
+class ArrayRule extends NonScalar
 {
-    protected $functions;
-    protected $map;
-    protected $ns;
-    protected $classes = [];
-
-    public function createTest($name)
-    {
-        $fnc = "validate_" . sha1($name);
-        $this->map[$name] = $fnc;
-        $this->functions[$fnc] = new ValidateFunction($this);
-        return $this->functions[$fnc];
-    }
-
-    public function setNamespace($ns)
-    {
-        if ($ns !== NULL && !preg_match('/^([a-z][a-z0-9_]*\\\\?)+$/i', $ns)) {
-            throw new \RuntimeException("{$ns} is not a valid namespace");
-        }
-        $this->ns = $ns;
-
-        return $this;
-    }
-
-    public function rule($name, Array $args = [], $msg = '')
-    {
-        $class = __NAMESPACE__ . "\\Rule\\" . ucfirst($name);
-        if (class_exists($class)) {
-            return new $class($name, $args, $msg);
-        }
-        $class = __NAMESPACE__ . "\\Rule\\" . ucfirst($name) . "Rule";
-        if (class_exists($class)) {
-            return new $class($name, $args, $msg);
-        }
-        return new Rule($name, $args, $msg);
-    }
-
-    public function getCode()
-    {
-        $var       = '$var_' . uniqid(true);
-        $funcmap   = $this->map;
-        $functions = $this->functions;
-        $namespace = $this->ns;
-        $classes   = $this->classes;
-        $code      = Templates::get('body')
-            ->render(compact(
-                'namespace','funcmap', 'classes',
-                'body', 'name', 'var', 'functions'
-            ), true);
-
-        return FixCode::fix($code);
-    }
-
-    public function mapClass(Array $map)
-    {
-        foreach ($map as $name => $class) {
-            if (Empty($class['props']) || !is_array($class['props'])) {
-                throw new \Exception("Invalid class map for $name");
-            }
-            $this->classes[$name] = $class['props'];
-        }
-        return $this;
-    }
-
-    public function writeTo($file)
-    {
-        return File::write($file, $this->GetCode());
-    }
 }
+
+
