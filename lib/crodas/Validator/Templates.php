@@ -189,6 +189,31 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Charset.tpl
+     */
+    class class_889c8c99df4438b8d719d56e98239001ce98b33d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$expected = ";
+            var_export($args);
+            echo ";\n\$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n" . ($self->result) . " = in_array(\$encoding, \$expected, true);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from CreditCard.tpl
      */
     class class_54c1f1fb9a99693048e9f640447249f3c659115e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -276,6 +301,29 @@ namespace {
                 ob_start();
             }
             echo "\$len = strlen(" . ($input) . ");\n" . ($self->result) . " = \$len >= " . ($args[0]) . " && \$len <= " . ($args[1]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Alpha.tpl
+     */
+    class class_63a832d9e94dc14f656368039d30aa1f8d6813b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = ctype_alpha(" . ($input) . ");\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -438,6 +486,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Array.tpl
+     */
+    class class_e78c4f877ad52a7df58643507b799d92468cb63f extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_array(" . ($input) . ") || (" . ($input) . " instanceof \\ArrayAccess\n    && " . ($input) . " instanceof \\Traversable\n    && " . ($input) . " instanceof \\Countable);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Body.tpl
      */
     class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -590,6 +661,52 @@ namespace {
         }
     }
 
+    /** 
+     *  Template class generated from Writable.tpl
+     */
+    class class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "if (" . ($input) . " instanceof \\SplFileInfo) {\n    " . ($self->result) . " = " . ($input) . "->isWritable();\n} else {\n    " . ($self->result) . " = (is_string(" . ($input) . ") && is_writable(" . ($input) . "));\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Xdigit.tpl
+     */
+    class class_d04f38951493cdac32878e31062404988e3aebe3 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = ctype_xdigit(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
 }
 
 namespace crodas\Validator {
@@ -615,6 +732,8 @@ namespace crodas\Validator {
                 'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
                 'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
                 'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
+                'charset.tpl' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
+                'charset' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
                 'creditcard.tpl' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
                 'creditcard' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
                 'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
@@ -623,6 +742,8 @@ namespace crodas\Validator {
                 'allof' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
                 'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
                 'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
+                'alpha.tpl' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
+                'alpha' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
                 'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
                 'anyof' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
                 'integer.tpl' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
@@ -635,6 +756,8 @@ namespace crodas\Validator {
                 'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
                 'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
                 'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
+                'array.tpl' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
+                'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
                 'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
@@ -645,6 +768,10 @@ namespace crodas\Validator {
                 'email' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'maxlength.tpl' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
                 'maxlength' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
+                'writable.tpl' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
+                'writable' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
+                'xdigit.tpl' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
+                'xdigit' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {
