@@ -36,26 +36,18 @@
 */
 namespace crodas\Validator\Rule;
 
-use crodas\Validator\Rule;
-
-class Groups extends Rule
+class When extends Groups
 {
-    protected $canBeSimplified = true;
-    protected $canBeSorted = true;
+    protected $canBeSimplified = false;
+    protected $canBeSorted = false;
 
     public function toCode($var, $parent = NULL)
     {
-        if (count($this->args) == 1 && $this->canBeSimplified) {
-            $this->result = $this->args[0]->result;
-            return $this->args[0]->toCode($var, $parent);
-        }
-        if ($this->canBeSorted) {
-            usort($this->args, function($a, $b) {
-                return $a->GetWeight() - $b->getWeight();
-            });
+        if (count($this->args) !== 3) {
+            throw new \InvalidArgumentException("@When expects three arguments");
         }
         return parent::toCode($var, $parent);
     }
-}
 
+}
 

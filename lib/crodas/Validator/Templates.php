@@ -225,7 +225,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "\$is_valid = is_numeric(" . ($input) . ") && " . ($input) . " > 0;\n";
+            echo $self->result . " = is_numeric(" . ($input) . ") && " . ($input) . " > 0;\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -312,6 +312,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Integer.tpl
+     */
+    class class_c76695457189d83cc740cf9405c0d1c6d8d3e786 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_numeric(" . ($input) . ") && (int)" . ($input) . " == " . ($input) . ";\n\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Date.tpl
      */
     class class_eeac73f6af19611258f68e085a761dea60b94970 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -360,6 +383,52 @@ namespace {
                 ob_start();
             }
             echo $self->result . " = " . ($input) . " >= " . ($args[0]) . " && " . ($input) . " <= " . ($args[1]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from When.tpl
+     */
+    class class_3402ae266a134bd7679147b3a881ffd937d42fd7 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $args[0]->toCode($input, $self) . "\n\nif (" . ($args[0]->result) . ") {\n    " . ($args[1]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[1]->result) . ";\n} else {\n    " . ($args[2]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[2]->result) . ";\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from NotEmpty.tpl
+     */
+    class class_b54ce34cf20d540ab7064acb34433250ac81a323 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = !empty(" . ($input) . ");\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -556,10 +625,16 @@ namespace crodas\Validator {
                 'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
                 'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
                 'anyof' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
+                'integer.tpl' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
+                'integer' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
                 'date.tpl' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
                 'date' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
                 'between.tpl' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
                 'between' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
+                'when.tpl' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
+                'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
+                'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
+                'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
                 'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',

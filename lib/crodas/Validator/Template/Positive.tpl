@@ -1,1 +1,1 @@
-$is_valid = is_numeric({{$input}}) && {{$input}} > 0;
+{{$self->result}} = is_numeric({{$input}}) && {{$input}} > 0;
