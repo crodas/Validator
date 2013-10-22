@@ -532,6 +532,43 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Object.tpl
+     */
+    class class_54be5080d1a09b6c34980e9baeb8f6de4b57690e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_object(" . ($input) . ");\n";
+            if (!empty($args)) {
+                echo "if (" . ($self->result) . ") {\n";
+                foreach($args as $i => $class) {
+                    echo "        \$type_" . ($i) . " = ";
+                    var_export($class);
+                    echo ";\n";
+                }
+                echo "    \$val = \n";
+                foreach($args as $i => $class) {
+                    echo "        (" . ($input) . " instanceof \$type_" . ($i) . ") ||\n";
+                }
+                echo "        false;\n\n    " . ($self->result) . " = \$val;\n}\n";
+            }
+            echo "\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Body.tpl
      */
     class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -813,6 +850,8 @@ namespace crodas\Validator {
                 'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
                 'array.tpl' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
                 'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
+                'object.tpl' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
+                'object' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
                 'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
                 'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',

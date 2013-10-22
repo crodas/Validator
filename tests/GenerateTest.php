@@ -153,6 +153,55 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(empty($errors));
     }
 
+    public function testAnnotationObjectNoType()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->something = "99";
+        $foo->object_1 = 19;
+        $foo->age     = 19;
+        $errors = $val->validate($foo);
+
+        $this->assertEquals(count($errors), 1);
+        $this->assertTrue(!empty($errors['object_1']));
+
+        $foo->object_1 = [19];
+        $errors = $val->validate($foo);
+        $this->assertEquals(count($errors), 1);
+        $this->assertTrue(!empty($errors['object_1']));
+
+        $foo->object_1 = new \stdclass;
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
+
+    }
+
+    public function testAnnotationObjectWithType()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->something = "99";
+        $foo->object_2 = 19;
+        $foo->age     = 19;
+        $errors = $val->validate($foo);
+
+        $this->assertEquals(count($errors), 1);
+        $this->assertTrue(!empty($errors['object_2']));
+
+        $foo->object_2 = [19];
+        $errors = $val->validate($foo);
+        $this->assertEquals(count($errors), 1);
+        $this->assertTrue(!empty($errors['object_2']));
+
+        $foo->object_2 = new \stdclass;
+        $errors = $val->validate($foo);
+        $this->assertEquals(count($errors), 1);
+        $this->assertTrue(!empty($errors['object_2']));
+
+        $foo->object_2 = new \ArrayObject;
+        $errors = $val->validate($foo);
+        $this->AssertTrue(empty($errors));
+    }
 
     public function testAnnotationRaw()
     {
