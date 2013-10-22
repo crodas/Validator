@@ -42,10 +42,11 @@ class Rule
     public    $msg;
     protected $type;
     protected $args;
+    protected static $inc = 0;
 
     public function __construct($type, Array $args, $msg='')
     {
-        $this->result = '$result_' . uniqid(true);
+        $this->result = '$is_' . $type . '_' . (self::$inc++);
         $this->type   = $type;
         $this->msg    = $msg;
         $this->args   = $args;
