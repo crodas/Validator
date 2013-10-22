@@ -58,6 +58,13 @@ class Init
         $this->mcallback = $this->ns . "\\get_object_properties";
     }
 
+    protected function getAnnotations()
+    {
+        $parser      = new DirParser($this->dir);
+        $annotations = $parser->getAnnotations();
+        return $annotations->get('Validate');
+    }
+
     protected function load()
     {
         if (is_callable($this->callback)) {
@@ -70,13 +77,11 @@ class Init
             return;
         }
 
-        $parser  = new DirParser($this->dir);
         $builder = new Builder; 
         $classes = [];
         $files   = $dirs = [];
         $builder->setNamespace($this->ns);
-        $annotations = $parser->getAnnotations();
-        foreach ($annotations->get('Validate') as $object) {
+        foreach ($this->GetAnnotations() as $object) {
             if (!$object->isClass()) continue;
             $props = [];
             foreach ($object->getProperties() as $prop) {
