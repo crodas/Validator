@@ -61,6 +61,16 @@ class AllTest extends \phpunit_framework_testcase
         $builder->createTest('test_' . $name)
             ->addRule($name, $args);
 
+        $builder->createTest('test_we_' . $name)
+            ->addRule($name, $args, 'exception');
+
+    }
+
+    public static function provideTestInvalid()
+    {
+        return array_filter(self::provideTest(), function($v) {
+            return !$v[2];
+        });
     }
 
     public static function provideTest()
@@ -160,5 +170,16 @@ class AllTest extends \phpunit_framework_testcase
     public function testAll($name, $input, $expect)
     {
         $this->assertEquals(f\validate('test_'. $name, $input), $expect);
+    }
+
+    /**
+     *  @dataProvider provideTestInvalid
+     *  @dependsOn testCompile
+     *  @expectedException UnexpectedValueException
+     *  @expectedExceptionMessage exception
+     */
+    public function testExceptionAll($name, $input, $expect)
+    {
+        f\validate('test_we_'. $name, $input);
     }
 }
