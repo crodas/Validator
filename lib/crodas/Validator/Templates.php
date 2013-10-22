@@ -189,6 +189,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from CreditCard.tpl
+     */
+    class class_54c1f1fb9a99693048e9f640447249f3c659115e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$tmp = preg_replace('([^0-9])', '', " . ($input) . ");\nif (empty(\$tmp)) {\n    " . ($self->result) . " = false;\n} else {\n    \$sum = 0;\n    \$tmp = strrev(\$tmp);\n    for (\$i = 0; \$i < strlen(\$tmp); \$i++) {\n        \$current = substr(\$tmp, \$i, 1);\n        if (\$i % 2 == 1) {\n            \$current *= 2;\n            if (\$current > 9) {\n                \$firstDigit = \$current % 10;\n                \$secondDigit = (\$current - \$firstDigit) / 10;\n                \$current = \$firstDigit + \$secondDigit;\n            }\n        }\n        \$sum += \$current;\n    }\n\n    " . ($self->result) . " = (\$sum % 10 == 0);\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Positive.tpl
      */
     class class_a02f0cae0d7ce37d38d758f9164c2cdaad435964 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -523,6 +546,8 @@ namespace crodas\Validator {
                 'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
                 'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
                 'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
+                'creditcard.tpl' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
+                'creditcard' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
                 'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
                 'positive' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
                 'allof.tpl' => 'class_a11236d6e933f6694cf823c635f715839924f36a',

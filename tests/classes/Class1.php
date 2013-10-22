@@ -30,6 +30,9 @@ class Class1
     /** @Not([@Between([5, 99])], "test {$value} is invalid") */
     protected $test = 198;
 
+    /** @Optional @CreditCard */
+    public $cc;
+
     public function setTest($i)
     {
         $this->test = $i;

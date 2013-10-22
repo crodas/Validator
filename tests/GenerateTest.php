@@ -68,6 +68,22 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(empty($errors));
     }
 
+    public function testAnnotationAndCreditCard()
+    {
+        $val = get_validator();
+        $foo = new Class1;
+        $foo->foo  = 'something';
+        $foo->cc   = "4111 9111 3111 1112";
+        $foo->age  = 19;
+        $errors = $val->validate($foo);
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['cc']));
+
+        $foo->cc   = "4111 1111 1111 1111";
+        $errors = $val->validate($foo);
+        $this->assertTrue(empty($errors));
+    }
+
     public function testAnnotationRaw()
     {
         $val = get_validator();
