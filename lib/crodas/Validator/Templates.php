@@ -632,7 +632,7 @@ namespace {
             if ($namespace) {
                 echo "namespace " . ($namespace) . ";\n";
             }
-            echo "\n";
+            echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
             foreach($functions as $name => $body) {
                 echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(" . ($var) . ");\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
             }
