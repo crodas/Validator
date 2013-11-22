@@ -53,6 +53,29 @@ class Rule
         $this->args   = $args;
     }
 
+    public function getErrorMessage()
+    {
+        if (!empty($this->msg)) {
+            $all = array();
+            $msg = preg_replace_callback('/(\{\$[a-zA-Z_0-9]+\})/', function($a) use (&$all) {
+                $all[] = '$' . substr($a[0], 2, -1);
+                return '%s';
+            }, $this->msg);
+
+            $msg = "_(" . var_export($msg, true) . ")";
+
+            if (!empty($all)) {
+                $msg = "sprintf($msg, ";
+                foreach ($all as $key) {
+                    $msg .= $key;
+                }
+                $msg .= ")";
+            }
+
+            return $msg;
+        }
+    }
+
     public function getWeight()
     {
         $weight = 10;

@@ -70,12 +70,7 @@ namespace {
                 ob_start();
             }
             if ($self->msg) {
-                echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(_(\"";
-                $__temporary = $self->msg;
-                if (!empty($__temporary)) {
-                    echo htmlentities($__temporary, ENT_QUOTES, 'UTF-8', false);
-                }
-                echo "\"));\n}\n";
+                echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(" . ($self->getErrorMessage()) . ");\n}\n";
             }
 
             if ($return) {
