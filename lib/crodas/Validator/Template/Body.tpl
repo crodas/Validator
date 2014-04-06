@@ -4,6 +4,15 @@
 namespace {{$namespace}};
 @end
 
+if (!is_callable('_')) {
+    // No gettext? That's weird
+    // but no problem mate!
+    function _($a) 
+    {
+        return $a;
+    }
+}
+
 @foreach ($functions as $name => $body)
 function {{$name}} ({{$var}})
 {

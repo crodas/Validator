@@ -77,6 +77,11 @@ class Builder
         return new Rule($name, $args, $msg);
     }
 
+    public function getNamespace()
+    {
+        return $this->ns;
+    }
+
     public function getCode()
     {
         $var       = '$var_' . uniqid(true);
