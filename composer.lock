@@ -3,8 +3,45 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "44827a129b63e642aa3957aa4672c2ae",
+    "hash": "f38520046a72b394e381f8e5ae09b3fb",
     "packages": [
+        {
+            "name": "crodas/cli",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/cli.git",
+                "reference": "420cd90ff10d013a2a5438f8a14957e867320387"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/cli/zipball/420cd90ff10d013a2a5438f8a14957e867320387",
+                "reference": "420cd90ff10d013a2a5438f8a14957e867320387",
+                "shasum": ""
+            },
+            "require": {
+                "crodas/notoj": "*",
+                "symfony/console": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "crodas": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Simple and silly abstraction on top of symfony/console",
+            "time": "2013-11-16 03:55:09"
+        },
         {
             "name": "crodas/notoj",
             "version": "v0.1.6",

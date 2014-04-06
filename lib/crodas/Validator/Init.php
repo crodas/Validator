@@ -47,6 +47,8 @@ class Init
     protected $ns;
     protected $callback;
     protected $mcallback;
+    protected $files;
+    protected $dirs;
 
     public function __construct($dir, $temporary, $prod = false)
     {
@@ -65,18 +67,13 @@ class Init
         return $annotations->get('Validate');
     }
 
-    protected function load()
+    public function generate()
     {
-        if (is_callable($this->callback)) {
-            return;
-        }
+        return $this->load();
+    }
 
-        $cache = new Watch($this->temp . '.cache');
-        if ($cache->isWatching() && ($this->prod || !$cache->hasChanged())) {
-            require $this->temp;
-            return;
-        }
-
+    protected function getValidatorCode()
+    {
         $builder = new Builder; 
         $classes = [];
         $files   = $dirs = [];
@@ -126,11 +123,30 @@ class Init
         }
 
         $builder->mapClass($classes);
+        $this->files = $files;
+        $this->dirs  = $dirs;
+
+        return $builder;
+    }
+
+    protected function load()
+    {
+        if (is_callable($this->callback)) {
+            return;
+        }
+
+        $cache = new Watch($this->temp . '.cache');
+        if ($cache->isWatching() && ($this->prod || !$cache->hasChanged())) {
+            require $this->temp;
+            return;
+        }
+
+        $builder = $this->getValidatorCode();
         $builder->writeTo($this->temp);
         require $this->temp;
 
-        $cache->watchFiles($files);
-        $cache->watchDirs($dirs);
+        $cache->watchFiles($this->files);
+        $cache->watchDirs($this->dirs);
         $cache->watch();
     }
 

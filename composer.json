@@ -5,7 +5,8 @@
         "crodas/watch-files": "*",
         "crodas/path": "*",
         "crodas/notoj": "~0.1",
-        "crodas/simple-view-engine": "*"
+        "crodas/simple-view-engine": "*",
+        "crodas/cli": "*"
     },
     "license": "BSD-4-Clause",
     "version": "v0.1.0",
