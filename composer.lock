@@ -3,20 +3,53 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f38520046a72b394e381f8e5ae09b3fb",
+    "hash": "b2281f44be44cd496bab83668c5cfb82",
     "packages": [
         {
-            "name": "crodas/cli",
-            "version": "dev-master",
+            "name": "crodas/class-info",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/crodas/cli.git",
-                "reference": "420cd90ff10d013a2a5438f8a14957e867320387"
+                "url": "https://github.com/crodas/ClassInfo.git",
+                "reference": "7c90ac240dc582b997f64860d5a5cb4721a89985"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/cli/zipball/420cd90ff10d013a2a5438f8a14957e867320387",
-                "reference": "420cd90ff10d013a2a5438f8a14957e867320387",
+                "url": "https://api.github.com/repos/crodas/ClassInfo/zipball/7c90ac240dc582b997f64860d5a5cb4721a89985",
+                "reference": "7c90ac240dc582b997f64860d5a5cb4721a89985",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "crodas": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Get classes and functions defined in a given file",
+            "time": "2014-01-06 23:40:49"
+        },
+        {
+            "name": "crodas/cli",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/cli.git",
+                "reference": "c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/cli/zipball/c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db",
+                "reference": "c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db",
                 "shasum": ""
             },
             "require": {
@@ -40,23 +73,57 @@
                 }
             ],
             "description": "Simple and silly abstraction on top of symfony/console",
-            "time": "2013-11-16 03:55:09"
+            "time": "2013-12-30 05:06:25"
         },
         {
-            "name": "crodas/notoj",
-            "version": "v0.1.6",
+            "name": "crodas/file-util",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/crodas/Notoj.git",
-                "reference": "ba9125079764a0edd1cd4e955646d95df29824c1"
+                "url": "https://github.com/crodas/FileUtils.git",
+                "reference": "7252d879e1cb8d9752d2715badf8f6a76c3e240a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Notoj/zipball/ba9125079764a0edd1cd4e955646d95df29824c1",
-                "reference": "ba9125079764a0edd1cd4e955646d95df29824c1",
+                "url": "https://api.github.com/repos/crodas/FileUtils/zipball/7252d879e1cb8d9752d2715badf8f6a76c3e240a",
+                "reference": "7252d879e1cb8d9752d2715badf8f6a76c3e240a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "crodas": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Useful libraries to manipulate files",
+            "time": "2014-05-12 05:54:40"
+        },
+        {
+            "name": "crodas/notoj",
+            "version": "v0.1.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/Notoj.git",
+                "reference": "243a7d4b5bf9aa76a3dfe5dc577a24302c85062f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/Notoj/zipball/243a7d4b5bf9aa76a3dfe5dc577a24302c85062f",
+                "reference": "243a7d4b5bf9aa76a3dfe5dc577a24302c85062f",
                 "shasum": ""
             },
             "require": {
+                "crodas/class-info": ">=0.1.9",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -76,20 +143,20 @@
                 }
             ],
             "description": "Annotation parser. Uses reflection and provides cache out of the box.",
-            "time": "2013-10-21 04:39:53"
+            "time": "2014-05-06 20:16:12"
         },
         {
             "name": "crodas/path",
-            "version": "dev-master",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/Path.git",
-                "reference": "dd30f039e0647b52b4e3b16a02930c0dfd469554"
+                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Path/zipball/dd30f039e0647b52b4e3b16a02930c0dfd469554",
-                "reference": "dd30f039e0647b52b4e3b16a02930c0dfd469554",
+                "url": "https://api.github.com/repos/crodas/Path/zipball/15ef24c4b2b81d8e5148406012af0a633126b3d5",
+                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5",
                 "shasum": ""
             },
             "type": "library",
@@ -109,20 +176,20 @@
                 }
             ],
             "description": "Library to manipulate paths",
-            "time": "2013-09-24 07:12:15"
+            "time": "2013-10-23 16:48:11"
         },
         {
             "name": "crodas/simple-view-engine",
-            "version": "dev-master",
+            "version": "v0.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleView.git",
-                "reference": "933383d13e4d9464941895f0bf4befdfc6f41e5a"
+                "reference": "db90b47cf78a7298529cdeb58767c6ad6081a135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/933383d13e4d9464941895f0bf4befdfc6f41e5a",
-                "reference": "933383d13e4d9464941895f0bf4befdfc6f41e5a",
+                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/db90b47cf78a7298529cdeb58767c6ad6081a135",
+                "reference": "db90b47cf78a7298529cdeb58767c6ad6081a135",
                 "shasum": ""
             },
             "require": {
@@ -147,20 +214,20 @@
                 }
             ],
             "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
-            "time": "2013-10-23 03:33:26"
+            "time": "2014-04-05 17:42:25"
         },
         {
             "name": "crodas/watch-files",
-            "version": "dev-master",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/WatchFiles.git",
-                "reference": "330ed4ddaca59a6be540b19d979d4ebe08526f36"
+                "reference": "b045dc0ea74791e815c2f7a0b114474131865892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/330ed4ddaca59a6be540b19d979d4ebe08526f36",
-                "reference": "330ed4ddaca59a6be540b19d979d4ebe08526f36",
+                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/b045dc0ea74791e815c2f7a0b114474131865892",
+                "reference": "b045dc0ea74791e815c2f7a0b114474131865892",
                 "shasum": ""
             },
             "require": {
@@ -183,21 +250,21 @@
                 }
             ],
             "description": "Watch files and directories for changes",
-            "time": "2013-10-20 07:43:43"
+            "time": "2013-11-02 05:36:42"
         },
         {
             "name": "symfony/console",
-            "version": "dev-master",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "608960cd7f7e906e64d6586b9152e308f7ea0ff2"
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/608960cd7f7e906e64d6586b9152e308f7ea0ff2",
-                "reference": "608960cd7f7e906e64d6586b9152e308f7ea0ff2",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/2e452005b1e1d003d23702d227e23614679eb5ca",
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +294,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Symfony Community",
@@ -236,21 +305,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-10-16 16:16:10"
+            "time": "2014-04-27 13:34:57"
         },
         {
             "name": "symfony/finder",
-            "version": "dev-master",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "e2ce3164ab58b4d54612e630571f158035ee8603"
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/e2ce3164ab58b4d54612e630571f158035ee8603",
-                "reference": "e2ce3164ab58b4d54612e630571f158035ee8603",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +343,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Symfony Community",
@@ -283,7 +354,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2013-09-19 09:47:34"
+            "time": "2014-04-27 13:34:57"
         }
     ],
     "packages-dev": [
@@ -292,7 +363,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [
 
     ],

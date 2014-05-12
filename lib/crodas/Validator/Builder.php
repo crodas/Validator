@@ -37,7 +37,7 @@
 namespace crodas\Validator;
 
 use crodas\SimpleView\FixCode;
-use crodas\File;
+use crodas\FileUtil\File;
 
 class Builder
 {

@@ -2,21 +2,20 @@
     "name": "crodas/validator",
     "description": "Validation library",
     "require": {
-        "crodas/watch-files": "*",
-        "crodas/path": "*",
+        "crodas/watch-files": "~0.1",
+        "crodas/file-util": ">=0.1.7",
         "crodas/notoj": "~0.1",
-        "crodas/simple-view-engine": "*",
-        "crodas/cli": "*"
+        "crodas/simple-view-engine": "~0.1",
+        "crodas/cli": "~0.1"
     },
     "license": "BSD-4-Clause",
-    "version": "v0.1.1",
+    "version": "v0.1.2",
     "authors": [
         {
             "name": "César D. Rodas",
             "email": "crodas@php.net"
         }
     ],
-    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "crodas": "lib/"
