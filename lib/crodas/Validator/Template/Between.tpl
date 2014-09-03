@@ -1,1 +1,1 @@
-{{ $self->result }} = {{$input}} >= {{$args[0]}} && {{$input}} <= {{$args[1]}};
+{{ $self->result }} = {{$input}} >= {{@$args[0]}} && {{$input}} <= {{@$args[1]}};
