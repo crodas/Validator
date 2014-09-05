@@ -142,6 +142,7 @@ namespace {
             if (!empty($args)) {
                 echo "if (" . ($self->result) . ") {\n";
                 foreach($args as $i => $class) {
+
                     $this->context['i'] = $i;
                     $this->context['class'] = $class;
                     echo "        \$type_" . ($i) . " = ";
@@ -150,6 +151,7 @@ namespace {
                 }
                 echo "    \$val = \n";
                 foreach($args as $i => $class) {
+
                     $this->context['i'] = $i;
                     $this->context['class'] = $class;
                     echo "        (" . ($input) . " instanceof \$type_" . ($i) . ") ||\n";
@@ -231,12 +233,14 @@ namespace {
             }
             echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
             foreach($functions as $name => $body) {
+
                 $this->context['name'] = $name;
                 $this->context['body'] = $body;
                 echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(" . ($var) . ");\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
             }
             echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
             foreach($funcmap as $name => $func) {
+
                 $this->context['name'] = $name;
                 $this->context['func'] = $func;
                 echo "        case ";
@@ -247,11 +251,14 @@ namespace {
             if (count($classes) > 0) {
                 echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n    switch (\$class) {\n";
                 foreach($classes as $name => $props) {
+
+                    $this->context['name'] = $name;
                     $this->context['props'] = $props;
                     echo "    case ";
                     var_export(strtolower($name));
                     echo ":\n";
                     foreach($props as $name => $is_public) {
+
                         $this->context['name'] = $name;
                         $this->context['is_public'] = $is_public;
                         if ($is_public) {
@@ -481,6 +488,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
+
                 $this->context['rule'] = $rule;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
@@ -770,6 +778,7 @@ namespace {
             }
             echo $self->result . " = true;\n";
             foreach($args as $rule) {
+
                 $this->context['rule'] = $rule;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
@@ -798,6 +807,7 @@ namespace {
             }
             echo $self->result . " = false;\n";
             foreach($args as $rule) {
+
                 $this->context['rule'] = $rule;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
             }
