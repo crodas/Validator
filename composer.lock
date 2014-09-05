@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3db49aeb0f772e753fb471415c0ceb72",
+    "hash": "018f4b6a906b4b62e4d75728df2f754a",
     "packages": [
         {
             "name": "crodas/asset",
-            "version": "dev-master",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleAssetManager.git",
-                "reference": "4b7447ddbb6d1d2e3109b46a2c9e40857e8687f5"
+                "reference": "a81661cc5739fa15c0ed7b6809b392b955c26401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleAssetManager/zipball/4b7447ddbb6d1d2e3109b46a2c9e40857e8687f5",
-                "reference": "4b7447ddbb6d1d2e3109b46a2c9e40857e8687f5",
+                "url": "https://api.github.com/repos/crodas/SimpleAssetManager/zipball/a81661cc5739fa15c0ed7b6809b392b955c26401",
+                "reference": "a81661cc5739fa15c0ed7b6809b392b955c26401",
                 "shasum": ""
             },
             "require": {
@@ -34,6 +34,9 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
             "authors": [
                 {
                     "name": "César D. Rodas",
@@ -41,7 +44,7 @@
                 }
             ],
             "description": "Very simple asset manager",
-            "time": "2014-05-21 17:49:33"
+            "time": "2014-09-05 21:19:35"
         },
         {
             "name": "crodas/class-info",
@@ -227,21 +230,21 @@
         },
         {
             "name": "crodas/simple-view-engine",
-            "version": "v0.1.28",
+            "version": "v0.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleView.git",
-                "reference": "60606175298c5a3fd9cc0c0c1f67d1eea2077522"
+                "reference": "a8cc8c69185b1c0160ea70960f33d9dcca9b56cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/60606175298c5a3fd9cc0c0c1f67d1eea2077522",
-                "reference": "60606175298c5a3fd9cc0c0c1f67d1eea2077522",
+                "url": "https://api.github.com/repos/crodas/SimpleView/zipball/a8cc8c69185b1c0160ea70960f33d9dcca9b56cf",
+                "reference": "a8cc8c69185b1c0160ea70960f33d9dcca9b56cf",
                 "shasum": ""
             },
             "require": {
-                "crodas/asset": "dev-master",
-                "crodas/service-provider": "*",
+                "crodas/asset": "~0.1",
+                "crodas/service-provider": "~0.1",
                 "crodas/watch-files": "*",
                 "symfony/console": "*",
                 "symfony/finder": "*"
@@ -263,7 +266,7 @@
                 }
             ],
             "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
-            "time": "2014-09-05 20:37:47"
+            "time": "2014-09-05 21:20:49"
         },
         {
             "name": "crodas/watch-files",
@@ -643,9 +646,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "crodas/asset": 20
-    },
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
     "platform": [
 
