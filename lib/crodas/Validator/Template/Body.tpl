@@ -32,7 +32,7 @@ function validate($rule, $input)
             break;
         @end
         default:
-            throw new \Exception("Cannot find validator for {$rule}");
+            $valid = true;
     }
     return $valid;
 

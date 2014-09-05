@@ -38,13 +38,18 @@ namespace crodas\Validator;
 
 class ValidateFunction
 {
-    protected $rules;
+    protected $rules = [];
     protected $parent;
     public $result;
 
     public function __construct($parent)
     {
         $this->parent = $parent;
+    }
+
+    public function hasRules()
+    {
+        return !empty($this->rules);
     }
 
     public function ruleExists($name)

@@ -56,697 +56,6 @@ namespace {
     }
 
     /** 
-     *  Template class generated from Error.tpl
-     */
-    class class_873c1a91cea8cbb245abe554d24748c8fe4e84b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            if ($self->msg) {
-                echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(" . ($self->getErrorMessage()) . ");\n}\n";
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Optional.tpl
-     */
-    class class_73177f083ce4946c03c09151e30c22c4883d8a97 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = true;\nif (empty(" . ($input) . ")) {\n";
-            if (!empty($parent)) {
-                echo "        goto exit_" . (sha1($parent->result)) . ";\n";
-            }
-            else {
-                echo "        return true;\n";
-            }
-            echo "}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from MinLength.tpl
-     */
-    class class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Not.tpl
-     */
-    class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = false;\n";
-            foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
-            }
-            echo "exit_" . (sha1($self->result)) . ":\n" . ($self->result) . " = !" . ($self->result) . ";\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Alnum.tpl
-     */
-    class class_fda5329c4d3473f86f472bff037149dac04a7069 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = ctype_alnum(" . ($input) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Charset.tpl
-     */
-    class class_889c8c99df4438b8d719d56e98239001ce98b33d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$expected = ";
-            var_export($args);
-            echo ";\n\$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n" . ($self->result) . " = in_array(\$encoding, \$expected, true);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from CreditCard.tpl
-     */
-    class class_54c1f1fb9a99693048e9f640447249f3c659115e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$tmp = preg_replace('([^0-9])', '', " . ($input) . ");\nif (empty(\$tmp)) {\n    " . ($self->result) . " = false;\n} else {\n    \$sum = 0;\n    \$tmp = strrev(\$tmp);\n    for (\$i = 0; \$i < strlen(\$tmp); \$i++) {\n        \$current = substr(\$tmp, \$i, 1);\n        if (\$i % 2 == 1) {\n            \$current *= 2;\n            if (\$current > 9) {\n                \$firstDigit = \$current % 10;\n                \$secondDigit = (\$current - \$firstDigit) / 10;\n                \$current = \$firstDigit + \$secondDigit;\n            }\n        }\n        \$sum += \$current;\n    }\n\n    " . ($self->result) . " = (\$sum % 10 == 0);\n}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Positive.tpl
-     */
-    class class_a02f0cae0d7ce37d38d758f9164c2cdaad435964 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = is_numeric(" . ($input) . ") && " . ($input) . " > 0;\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Min.tpl
-     */
-    class class_5c60ab5456fdb25f6510d0c086f72de82c9315b8 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = " . ($input) . " >= " . ($args[0]) . ";\n\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from AllOf.tpl
-     */
-    class class_a11236d6e933f6694cf823c635f715839924f36a extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = true;\n";
-            foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input, $self)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
-            }
-            echo "exit_" . (sha1($self->result)) . ":\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Length.tpl
-     */
-    class class_87373bac58cc91a097cde8b6f75577026c5bdf85 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$len = strlen(" . ($input) . ");\n" . ($self->result) . " = \$len >= " . ($args[0]) . " && \$len <= " . ($args[1]) . ";\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from CountryCode.tpl
-     */
-    class class_ef15a1b099f9fef8637467be587b15e05d10bf46 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$countryCodeList = array(\n    'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW',\n    'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN',\n    'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG',\n    'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ',\n    'DE', 'DJ', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ',\n    'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM',\n    'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT',\n    'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO',\n    'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB',\n    'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF',\n    'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV',\n    'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR',\n    'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS',\n    'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE',\n    'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX',\n    'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR',\n    'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG',\n    'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW'\n);\n\n" . ($self->result) . " = in_array(strtoupper(" . ($input) . "), \$countryCodeList);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Alpha.tpl
-     */
-    class class_63a832d9e94dc14f656368039d30aa1f8d6813b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = ctype_alpha(" . ($input) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from AnyOf.tpl
-     */
-    class class_f4f0cb85093b6835d6eb2a544e6065572b50cab6 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = false;\n";
-            foreach($args as $rule) {
-                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
-            }
-            echo "exit_" . (sha1($self->result)) . ":\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Integer.tpl
-     */
-    class class_c76695457189d83cc740cf9405c0d1c6d8d3e786 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = is_numeric(" . ($input) . ") && (int)" . ($input) . " == " . ($input) . ";\n\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Date.tpl
-     */
-    class class_eeac73f6af19611258f68e085a761dea60b94970 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "if (" . ($input) . " instanceof \\DateTime) {\n    " . ($self->result) . " = true;\n} elseif (!is_string(" . ($input) . ")) {\n    " . ($self->result) . " = false;\n} else {\n";
-            if (empty($args[0])) {
-                echo "        " . ($self->result) . " = false !== strtotime(" . ($input) . ");\n";
-            }
-            else {
-                echo "        \$dateFromFormat = \\DateTime::createFromFormat(";
-                var_export($args[0]);
-                echo ", " . ($input) . ");\n        " . ($self->result) . " = \$dateFromFormat\n                && " . ($input) . " === date(";
-                var_export($args[0]);
-                echo ", \$dateFromFormat->getTimestamp());\n";
-            }
-            echo "}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Between.tpl
-     */
-    class class_9f088ed2c64f7697e44a25fcb3616547625c8713 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = " . ($input) . " >= " . ($args[0]) . " && " . ($input) . " <= " . ($args[1]) . ";\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from When.tpl
-     */
-    class class_3402ae266a134bd7679147b3a881ffd937d42fd7 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $args[0]->toCode($input, $self) . "\n\nif (" . ($args[0]->result) . ") {\n    " . ($args[1]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[1]->result) . ";\n} else {\n    " . ($args[2]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[2]->result) . ";\n}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from NotEmpty.tpl
-     */
-    class class_b54ce34cf20d540ab7064acb34433250ac81a323 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = !empty(" . ($input) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Max.tpl
-     */
-    class class_8dafd4fcbb5866963529085f8e3a95e41042e10d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = " . ($input) . " <= " . ($args[0]) . ";\n\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Array.tpl
-     */
-    class class_e78c4f877ad52a7df58643507b799d92468cb63f extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = is_array(" . ($input) . ") || (" . ($input) . " instanceof \\ArrayAccess\n    && " . ($input) . " instanceof \\Traversable\n    && " . ($input) . " instanceof \\Countable);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Object.tpl
-     */
-    class class_54be5080d1a09b6c34980e9baeb8f6de4b57690e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = is_object(" . ($input) . ");\n";
-            if (!empty($args)) {
-                echo "if (" . ($self->result) . ") {\n";
-                foreach($args as $i => $class) {
-                    echo "        \$type_" . ($i) . " = ";
-                    var_export($class);
-                    echo ";\n";
-                }
-                echo "    \$val = \n";
-                foreach($args as $i => $class) {
-                    echo "        (" . ($input) . " instanceof \$type_" . ($i) . ") ||\n";
-                }
-                echo "        false;\n\n    " . ($self->result) . " = \$val;\n}\n";
-            }
-            echo "\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Body.tpl
-     */
-    class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "<?php\n\n";
-            if ($namespace) {
-                echo "namespace " . ($namespace) . ";\n";
-            }
-            echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
-            foreach($functions as $name => $body) {
-                echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(" . ($var) . ");\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
-            }
-            echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
-            foreach($funcmap as $name => $func) {
-                echo "        case ";
-                var_export($name);
-                echo ":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
-            }
-            echo "        default:\n            throw new \\Exception(\"Cannot find validator for {\$rule}\");\n    }\n    return \$valid;\n\n}\n\n";
-            if (count($classes) > 0) {
-                echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n    switch (\$class) {\n";
-                foreach($classes as $name => $props) {
-                    echo "    case ";
-                    var_export(strtolower($name));
-                    echo ":\n";
-                    foreach($props as $name => $is_public) {
-                        if ($is_public) {
-                            echo "                \$data[";
-                            var_export($name);
-                            echo "] = \$object->" . ($name) . ";\n";
-                        }
-                        else {
-                            echo "                \$property = new \\ReflectionProperty(\$object, ";
-                            var_export($name);
-                            echo ");\n                \$property->setAccessible(true);\n                \$data[";
-                            var_export($name);
-                            echo "] = \$property->getValue(\$object);\n";
-                        }
-                    }
-                    echo "        break;\n";
-                }
-                echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from NoWhitespace.tpl
-     */
-    class class_caea816a5db6e6c3998cf366128c6cf4cbec0c18 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = !preg_match('#\\s#', " . ($input) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Bool.tpl
-     */
-    class class_ceb2e9f7134390fa5010bc47de63df845c4b22d4 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $self->result . " = is_bool(" . ($input) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Rule.tpl
-     */
-    class class_0fe2072b1b0fe661662291c92a97bc421caa1072 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            if ($scalar) {
-                echo "    if (\$is_scalar) {\n";
-                crodas\Validator\Templates::exec($type, $this->context);
-                echo "    } else {\n        " . ($self->result) . " = false;\n    } \n";
-            }
-            else {
-                crodas\Validator\Templates::exec($type, $this->context);
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
      *  Template class generated from Email.tpl
      */
     class class_6a3c3199ac12f05b87a72f489af82723d8e98693 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -793,9 +102,9 @@ namespace {
     }
 
     /** 
-     *  Template class generated from Writable.tpl
+     *  Template class generated from MinLength.tpl
      */
-    class class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    class class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -806,7 +115,506 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "if (" . ($input) . " instanceof \\SplFileInfo) {\n    " . ($self->result) . " = " . ($input) . "->isWritable();\n} else {\n    " . ($self->result) . " = (is_string(" . ($input) . ") && is_writable(" . ($input) . "));\n}\n";
+            echo $self->result . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Object.tpl
+     */
+    class class_54be5080d1a09b6c34980e9baeb8f6de4b57690e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_object(" . ($input) . ");\n";
+            if (!empty($args)) {
+                echo "if (" . ($self->result) . ") {\n";
+                foreach($args as $i => $class) {
+                    $this->context['i'] = $i;
+                    $this->context['class'] = $class;
+                    echo "        \$type_" . ($i) . " = ";
+                    var_export($class);
+                    echo ";\n";
+                }
+                echo "    \$val = \n";
+                foreach($args as $i => $class) {
+                    $this->context['i'] = $i;
+                    $this->context['class'] = $class;
+                    echo "        (" . ($input) . " instanceof \$type_" . ($i) . ") ||\n";
+                }
+                echo "        false;\n\n    " . ($self->result) . " = \$val;\n}\n";
+            }
+            echo "\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Min.tpl
+     */
+    class class_5c60ab5456fdb25f6510d0c086f72de82c9315b8 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = " . ($input) . " >= " . ($args[0]) . ";\n\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Max.tpl
+     */
+    class class_8dafd4fcbb5866963529085f8e3a95e41042e10d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = " . ($input) . " <= " . ($args[0]) . ";\n\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Body.tpl
+     */
+    class class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "<?php\n\n";
+            if ($namespace) {
+                echo "namespace " . ($namespace) . ";\n";
+            }
+            echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
+            foreach($functions as $name => $body) {
+                $this->context['name'] = $name;
+                $this->context['body'] = $body;
+                echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(" . ($var) . ");\n    " . ($body->toCode($var)) . "\n    return " . ($body->result) . ";\n}\n\n";
+            }
+            echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
+            foreach($funcmap as $name => $func) {
+                $this->context['name'] = $name;
+                $this->context['func'] = $func;
+                echo "        case ";
+                var_export($name);
+                echo ":\n            \$valid = " . ($func) . "(\$input);\n            break;\n";
+            }
+            echo "        default:\n            \$valid = true;\n    }\n    return \$valid;\n\n}\n\n";
+            if (count($classes) > 0) {
+                echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n    switch (\$class) {\n";
+                foreach($classes as $name => $props) {
+                    $this->context['props'] = $props;
+                    echo "    case ";
+                    var_export(strtolower($name));
+                    echo ":\n";
+                    foreach($props as $name => $is_public) {
+                        $this->context['name'] = $name;
+                        $this->context['is_public'] = $is_public;
+                        if ($is_public) {
+                            echo "                \$data[";
+                            var_export($name);
+                            echo "] = \$object->" . ($name) . ";\n";
+                        }
+                        else {
+                            echo "                \$property = new \\ReflectionProperty(\$object, ";
+                            var_export($name);
+                            echo ");\n                \$property->setAccessible(true);\n                \$data[";
+                            var_export($name);
+                            echo "] = \$property->getValue(\$object);\n";
+                        }
+                    }
+                    echo "        break;\n";
+                }
+                echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Array.tpl
+     */
+    class class_e78c4f877ad52a7df58643507b799d92468cb63f extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_array(" . ($input) . ") || (" . ($input) . " instanceof \\ArrayAccess\n    && " . ($input) . " instanceof \\Traversable\n    && " . ($input) . " instanceof \\Countable);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Integer.tpl
+     */
+    class class_c76695457189d83cc740cf9405c0d1c6d8d3e786 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_numeric(" . ($input) . ") && (int)" . ($input) . " == " . ($input) . ";\n\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Alpha.tpl
+     */
+    class class_63a832d9e94dc14f656368039d30aa1f8d6813b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = ctype_alpha(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from NotEmpty.tpl
+     */
+    class class_b54ce34cf20d540ab7064acb34433250ac81a323 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = !empty(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from CountryCode.tpl
+     */
+    class class_ef15a1b099f9fef8637467be587b15e05d10bf46 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$countryCodeList = array(\n    'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW',\n    'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN',\n    'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG',\n    'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ',\n    'DE', 'DJ', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ',\n    'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM',\n    'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT',\n    'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO',\n    'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB',\n    'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF',\n    'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV',\n    'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR',\n    'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS',\n    'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE',\n    'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX',\n    'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR',\n    'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG',\n    'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW'\n);\n\n" . ($self->result) . " = in_array(strtoupper(" . ($input) . "), \$countryCodeList);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Bool.tpl
+     */
+    class class_ceb2e9f7134390fa5010bc47de63df845c4b22d4 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_bool(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Length.tpl
+     */
+    class class_87373bac58cc91a097cde8b6f75577026c5bdf85 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$len = strlen(" . ($input) . ");\n" . ($self->result) . " = \$len >= " . ($args[0]) . " && \$len <= " . ($args[1]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Error.tpl
+     */
+    class class_873c1a91cea8cbb245abe554d24748c8fe4e84b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            if ($self->msg) {
+                echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(" . ($self->getErrorMessage()) . ");\n}\n";
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Not.tpl
+     */
+    class class_24c861bd74b2967c8b4b91272f2165119e46e335 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = false;\n";
+            foreach($args as $rule) {
+                $this->context['rule'] = $rule;
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+            }
+            echo "exit_" . (sha1($self->result)) . ":\n" . ($self->result) . " = !" . ($self->result) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from When.tpl
+     */
+    class class_3402ae266a134bd7679147b3a881ffd937d42fd7 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $args[0]->toCode($input, $self) . "\n\nif (" . ($args[0]->result) . ") {\n    " . ($args[1]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[1]->result) . ";\n} else {\n    " . ($args[2]->toCode($input, $self)) . "\n    " . ($self->result) . " = " . ($args[2]->result) . ";\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Between.tpl
+     */
+    class class_9f088ed2c64f7697e44a25fcb3616547625c8713 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = " . ($input) . " >= ";
+            var_export($args[0]);
+            echo " && " . ($input) . " <= ";
+            var_export($args[1]);
+            echo ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Positive.tpl
+     */
+    class class_a02f0cae0d7ce37d38d758f9164c2cdaad435964 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = is_numeric(" . ($input) . ") && " . ($input) . " > 0;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Alnum.tpl
+     */
+    class class_fda5329c4d3473f86f472bff037149dac04a7069 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = ctype_alnum(" . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Date.tpl
+     */
+    class class_eeac73f6af19611258f68e085a761dea60b94970 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "if (" . ($input) . " instanceof \\DateTime) {\n    " . ($self->result) . " = true;\n} elseif (!is_string(" . ($input) . ")) {\n    " . ($self->result) . " = false;\n} else {\n";
+            if (empty($args[0])) {
+                echo "        " . ($self->result) . " = false !== strtotime(" . ($input) . ");\n";
+            }
+            else {
+                echo "        \$dateFromFormat = \\DateTime::createFromFormat(";
+                var_export($args[0]);
+                echo ", " . ($input) . ");\n        " . ($self->result) . " = \$dateFromFormat\n                && " . ($input) . " === date(";
+                var_export($args[0]);
+                echo ", \$dateFromFormat->getTimestamp());\n";
+            }
+            echo "}\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -838,6 +646,216 @@ namespace {
         }
     }
 
+    /** 
+     *  Template class generated from Charset.tpl
+     */
+    class class_889c8c99df4438b8d719d56e98239001ce98b33d extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$expected = ";
+            var_export($args);
+            echo ";\n\$encoding = mb_detect_encoding(" . ($input) . ", \$expected, true);\n" . ($self->result) . " = in_array(\$encoding, \$expected, true);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Optional.tpl
+     */
+    class class_73177f083ce4946c03c09151e30c22c4883d8a97 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = true;\nif (empty(" . ($input) . ")) {\n";
+            if (!empty($parent)) {
+                echo "        goto exit_" . (sha1($parent->result)) . ";\n";
+            }
+            else {
+                echo "        return true;\n";
+            }
+            echo "}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from NoWhitespace.tpl
+     */
+    class class_caea816a5db6e6c3998cf366128c6cf4cbec0c18 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = !preg_match('#\\s#', " . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Rule.tpl
+     */
+    class class_0fe2072b1b0fe661662291c92a97bc421caa1072 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            if ($scalar) {
+                echo "    if (\$is_scalar) {\n";
+                crodas\Validator\Templates::exec($type, $this->context);
+                echo "    } else {\n        " . ($self->result) . " = false;\n    } \n";
+            }
+            else {
+                crodas\Validator\Templates::exec($type, $this->context);
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from AllOf.tpl
+     */
+    class class_a11236d6e933f6694cf823c635f715839924f36a extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = true;\n";
+            foreach($args as $rule) {
+                $this->context['rule'] = $rule;
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (!" . ($rule->result) . ") {\n        " . ($self->result) . " = false;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+            }
+            echo "exit_" . (sha1($self->result)) . ":\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from AnyOf.tpl
+     */
+    class class_f4f0cb85093b6835d6eb2a544e6065572b50cab6 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = false;\n";
+            foreach($args as $rule) {
+                $this->context['rule'] = $rule;
+                echo "    " . ($rule->toCode($input, $self)) . "\n    if (" . ($rule->result) . ") {\n        " . ($self->result) . " = true;\n        goto exit_" . (sha1($self->result)) . ";\n    }\n";
+            }
+            echo "exit_" . (sha1($self->result)) . ":\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from CreditCard.tpl
+     */
+    class class_54c1f1fb9a99693048e9f640447249f3c659115e extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$tmp = preg_replace('([^0-9])', '', " . ($input) . ");\nif (empty(\$tmp)) {\n    " . ($self->result) . " = false;\n} else {\n    \$sum = 0;\n    \$tmp = strrev(\$tmp);\n    for (\$i = 0; \$i < strlen(\$tmp); \$i++) {\n        \$current = substr(\$tmp, \$i, 1);\n        if (\$i % 2 == 1) {\n            \$current *= 2;\n            if (\$current > 9) {\n                \$firstDigit = \$current % 10;\n                \$secondDigit = (\$current - \$firstDigit) / 10;\n                \$current = \$firstDigit + \$secondDigit;\n            }\n        }\n        \$sum += \$current;\n    }\n\n    " . ($self->result) . " = (\$sum % 10 == 0);\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Writable.tpl
+     */
+    class class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "if (" . ($input) . " instanceof \\SplFileInfo) {\n    " . ($self->result) . " = " . ($input) . "->isWritable();\n} else {\n    " . ($self->result) . " = (is_string(" . ($input) . ") && is_writable(" . ($input) . "));\n}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
 }
 
 namespace crodas\Validator {
@@ -847,36 +865,36 @@ namespace crodas\Validator {
         public static function getAll()
         {
             return array (
-                0 => 'error',
-                1 => 'optional',
+                0 => 'email',
+                1 => 'maxlength',
                 2 => 'minlength',
-                3 => 'not',
-                4 => 'alnum',
-                5 => 'charset',
-                6 => 'creditcard',
-                7 => 'positive',
-                8 => 'min',
-                9 => 'allof',
-                10 => 'length',
+                3 => 'object',
+                4 => 'min',
+                5 => 'max',
+                6 => 'body',
+                7 => 'array',
+                8 => 'integer',
+                9 => 'alpha',
+                10 => 'notempty',
                 11 => 'countrycode',
-                12 => 'alpha',
-                13 => 'anyof',
-                14 => 'integer',
-                15 => 'date',
-                16 => 'between',
-                17 => 'when',
-                18 => 'notempty',
-                19 => 'max',
-                20 => 'array',
-                21 => 'object',
-                22 => 'body',
-                23 => 'nowhitespace',
-                24 => 'bool',
+                12 => 'bool',
+                13 => 'length',
+                14 => 'error',
+                15 => 'not',
+                16 => 'when',
+                17 => 'between',
+                18 => 'positive',
+                19 => 'alnum',
+                20 => 'date',
+                21 => 'xdigit',
+                22 => 'charset',
+                23 => 'optional',
+                24 => 'nowhitespace',
                 25 => 'rule',
-                26 => 'email',
-                27 => 'maxlength',
-                28 => 'writable',
-                29 => 'xdigit',
+                26 => 'allof',
+                27 => 'anyof',
+                28 => 'creditcard',
+                29 => 'writable',
             );
         }
 
@@ -889,66 +907,66 @@ namespace crodas\Validator {
         public static function get($name, Array $context = array())
         {
             static $classes = array (
-                'error.tpl' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
-                'error' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
-                'optional.tpl' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
-                'optional' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
-                'minlength.tpl' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
-                'minlength' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
-                'not.tpl' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
-                'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
-                'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
-                'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
-                'charset.tpl' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
-                'charset' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
-                'creditcard.tpl' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
-                'creditcard' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
-                'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
-                'positive' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
-                'min.tpl' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
-                'min' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
-                'allof.tpl' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
-                'allof' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
-                'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
-                'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
-                'countrycode.tpl' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
-                'countrycode' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
-                'alpha.tpl' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
-                'alpha' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
-                'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
-                'anyof' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
-                'integer.tpl' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
-                'integer' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
-                'date.tpl' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
-                'date' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
-                'between.tpl' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
-                'between' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
-                'when.tpl' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
-                'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
-                'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
-                'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
-                'max.tpl' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
-                'max' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
-                'array.tpl' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
-                'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
-                'object.tpl' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
-                'object' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
-                'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
-                'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
-                'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
-                'nowhitespace' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
-                'bool.tpl' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
-                'bool' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
-                'rule.tpl' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
-                'rule' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
                 'email.tpl' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'email' => 'class_6a3c3199ac12f05b87a72f489af82723d8e98693',
                 'maxlength.tpl' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
                 'maxlength' => 'class_61bf62a27e7d3f5195a3a9d8f23898a40ae479a4',
-                'writable.tpl' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
-                'writable' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
+                'minlength.tpl' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
+                'minlength' => 'class_f383bca0734f6fcb6b4d791ef8997c23e2b34e14',
+                'object.tpl' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
+                'object' => 'class_54be5080d1a09b6c34980e9baeb8f6de4b57690e',
+                'min.tpl' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
+                'min' => 'class_5c60ab5456fdb25f6510d0c086f72de82c9315b8',
+                'max.tpl' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
+                'max' => 'class_8dafd4fcbb5866963529085f8e3a95e41042e10d',
+                'body.tpl' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
+                'body' => 'class_98919c47cacf71f4af08a8b2c075ad7c19e2b5b1',
+                'array.tpl' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
+                'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
+                'integer.tpl' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
+                'integer' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
+                'alpha.tpl' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
+                'alpha' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
+                'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
+                'notempty' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',
+                'countrycode.tpl' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
+                'countrycode' => 'class_ef15a1b099f9fef8637467be587b15e05d10bf46',
+                'bool.tpl' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
+                'bool' => 'class_ceb2e9f7134390fa5010bc47de63df845c4b22d4',
+                'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
+                'length' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
+                'error.tpl' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
+                'error' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
+                'not.tpl' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
+                'not' => 'class_24c861bd74b2967c8b4b91272f2165119e46e335',
+                'when.tpl' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
+                'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
+                'between.tpl' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
+                'between' => 'class_9f088ed2c64f7697e44a25fcb3616547625c8713',
+                'positive.tpl' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
+                'positive' => 'class_a02f0cae0d7ce37d38d758f9164c2cdaad435964',
+                'alnum.tpl' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
+                'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
+                'date.tpl' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
+                'date' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
                 'xdigit.tpl' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
                 'xdigit' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
+                'charset.tpl' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
+                'charset' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',
+                'optional.tpl' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
+                'optional' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
+                'nowhitespace.tpl' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
+                'nowhitespace' => 'class_caea816a5db6e6c3998cf366128c6cf4cbec0c18',
+                'rule.tpl' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
+                'rule' => 'class_0fe2072b1b0fe661662291c92a97bc421caa1072',
+                'allof.tpl' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
+                'allof' => 'class_a11236d6e933f6694cf823c635f715839924f36a',
+                'anyof.tpl' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
+                'anyof' => 'class_f4f0cb85093b6835d6eb2a544e6065572b50cab6',
+                'creditcard.tpl' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
+                'creditcard' => 'class_54c1f1fb9a99693048e9f640447249f3c659115e',
+                'writable.tpl' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
+                'writable' => 'class_ff0ee333d7819e4c6a8a7a9cc504850a43d79e96',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {

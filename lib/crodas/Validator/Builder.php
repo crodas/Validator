@@ -46,6 +46,15 @@ class Builder
     protected $ns;
     protected $classes = [];
 
+    public function hasRules($rule)
+    {
+        $rule = "validate_" . sha1($rule);
+        if (!empty($this->functions[$rule])) {
+            return $this->functions[$rule]->hasRules();
+        }
+        return false;
+    }
+
     public function createTest($name)
     {
         $fnc = "validate_" . sha1($name);
@@ -89,7 +98,15 @@ class Builder
         $functions = $this->functions;
         $namespace = $this->ns;
         $classes   = $this->classes;
-        $code      = Templates::get('body')
+
+        foreach ($this->functions as $id => $function) {
+            if (!$function->hasRules()) {
+                $pos = array_search($id, $funcmap);
+                unset($funcmap[$pos]);
+            }
+        }
+
+        $code = Templates::get('body')
             ->render(compact(
                 'namespace','funcmap', 'classes',
                 'body', 'name', 'var', 'functions'
