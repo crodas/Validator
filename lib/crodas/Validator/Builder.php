@@ -103,6 +103,7 @@ class Builder
             if (!$function->hasRules()) {
                 $pos = array_search($id, $funcmap);
                 unset($funcmap[$pos]);
+                unset($functions[$id]);
             }
         }
 
