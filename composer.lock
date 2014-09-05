@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "b2281f44be44cd496bab83668c5cfb82",
+    "hash": "9a1805ffa6551fe3204e38c1073059e4",
     "packages": [
         {
             "name": "crodas/class-info",
@@ -77,16 +78,16 @@
         },
         {
             "name": "crodas/file-util",
-            "version": "v0.1.7",
+            "version": "v0.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/FileUtils.git",
-                "reference": "7252d879e1cb8d9752d2715badf8f6a76c3e240a"
+                "reference": "4e9adee9619743583c1f455039b9479bd0db4557"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/FileUtils/zipball/7252d879e1cb8d9752d2715badf8f6a76c3e240a",
-                "reference": "7252d879e1cb8d9752d2715badf8f6a76c3e240a",
+                "url": "https://api.github.com/repos/crodas/FileUtils/zipball/4e9adee9619743583c1f455039b9479bd0db4557",
+                "reference": "4e9adee9619743583c1f455039b9479bd0db4557",
                 "shasum": ""
             },
             "type": "library",
@@ -106,24 +107,25 @@
                 }
             ],
             "description": "Useful libraries to manipulate files",
-            "time": "2014-05-12 05:54:40"
+            "time": "2014-09-05 17:54:09"
         },
         {
             "name": "crodas/notoj",
-            "version": "v0.1.15",
+            "version": "v0.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/Notoj.git",
-                "reference": "243a7d4b5bf9aa76a3dfe5dc577a24302c85062f"
+                "reference": "2a771b4548e2292b82da76b82167ba6455795c41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Notoj/zipball/243a7d4b5bf9aa76a3dfe5dc577a24302c85062f",
-                "reference": "243a7d4b5bf9aa76a3dfe5dc577a24302c85062f",
+                "url": "https://api.github.com/repos/crodas/Notoj/zipball/2a771b4548e2292b82da76b82167ba6455795c41",
+                "reference": "2a771b4548e2292b82da76b82167ba6455795c41",
                 "shasum": ""
             },
             "require": {
                 "crodas/class-info": ">=0.1.9",
+                "crodas/file-util": ">=0.1.9",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -143,40 +145,7 @@
                 }
             ],
             "description": "Annotation parser. Uses reflection and provides cache out of the box.",
-            "time": "2014-05-06 20:16:12"
-        },
-        {
-            "name": "crodas/path",
-            "version": "v0.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/crodas/Path.git",
-                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Path/zipball/15ef24c4b2b81d8e5148406012af0a633126b3d5",
-                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "crodas": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-4-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "César D. Rodas",
-                    "email": "crodas@php.net"
-                }
-            ],
-            "description": "Library to manipulate paths",
-            "time": "2013-10-23 16:48:11"
+            "time": "2014-09-05 17:13:01"
         },
         {
             "name": "crodas/simple-view-engine",
@@ -218,20 +187,20 @@
         },
         {
             "name": "crodas/watch-files",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/WatchFiles.git",
-                "reference": "b045dc0ea74791e815c2f7a0b114474131865892"
+                "reference": "9ac4b327fcd0610f147816e97ae592612855cd26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/b045dc0ea74791e815c2f7a0b114474131865892",
-                "reference": "b045dc0ea74791e815c2f7a0b114474131865892",
+                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/9ac4b327fcd0610f147816e97ae592612855cd26",
+                "reference": "9ac4b327fcd0610f147816e97ae592612855cd26",
                 "shasum": ""
             },
             "require": {
-                "crodas/path": "*"
+                "crodas/file-util": ">=0.1.7"
             },
             "type": "library",
             "autoload": {
@@ -250,36 +219,38 @@
                 }
             ],
             "description": "Watch files and directories for changes",
-            "time": "2013-11-02 05:36:42"
+            "time": "2014-05-12 06:38:45"
         },
         {
             "name": "symfony/console",
-            "version": "v2.4.4",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca"
+                "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/2e452005b1e1d003d23702d227e23614679eb5ca",
-                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
+                "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
+                "psr/log": "~1.0",
                 "symfony/event-dispatcher": "~2.1"
             },
             "suggest": {
+                "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -293,33 +264,31 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-27 13:34:57"
+            "time": "2014-08-14 16:10:54"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.4.4",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730"
+                "reference": "f40854d1a19c339c7f969f8f6d6d6e9153311c4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
-                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/f40854d1a19c339c7f969f8f6d6d6e9153311c4c",
+                "reference": "f40854d1a19c339c7f969f8f6d6d6e9153311c4c",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +297,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -342,19 +311,17 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-27 13:34:57"
+            "time": "2014-09-03 09:00:14"
         }
     ],
     "packages-dev": [
@@ -367,6 +334,7 @@
     "stability-flags": [
 
     ],
+    "prefer-stable": false,
     "platform": [
 
     ],

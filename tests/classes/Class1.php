@@ -11,6 +11,12 @@ class Class1
      */
     public $foo;
 
+    /**
+     *  @Optional
+     *  @Between([0, 23], "Invalid time format")
+     */
+    public $bar;
+
     /** @Optional @Date(['Y-m-d'], 'Invalid date format') */
     public $date;
 
