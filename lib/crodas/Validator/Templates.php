@@ -333,6 +333,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Int.tpl
+     */
+    class class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            crodas\Validator\Templates::exec("integer", $this->context);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Alpha.tpl
      */
     class class_63a832d9e94dc14f656368039d30aa1f8d6813b9 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -884,27 +907,28 @@ namespace crodas\Validator {
                 6 => 'body',
                 7 => 'array',
                 8 => 'integer',
-                9 => 'alpha',
-                10 => 'notempty',
-                11 => 'countrycode',
-                12 => 'bool',
-                13 => 'length',
-                14 => 'error',
-                15 => 'not',
-                16 => 'when',
-                17 => 'between',
-                18 => 'positive',
-                19 => 'alnum',
-                20 => 'date',
-                21 => 'xdigit',
-                22 => 'charset',
-                23 => 'optional',
-                24 => 'nowhitespace',
-                25 => 'rule',
-                26 => 'allof',
-                27 => 'anyof',
-                28 => 'creditcard',
-                29 => 'writable',
+                9 => 'int',
+                10 => 'alpha',
+                11 => 'notempty',
+                12 => 'countrycode',
+                13 => 'bool',
+                14 => 'length',
+                15 => 'error',
+                16 => 'not',
+                17 => 'when',
+                18 => 'between',
+                19 => 'positive',
+                20 => 'alnum',
+                21 => 'date',
+                22 => 'xdigit',
+                23 => 'charset',
+                24 => 'optional',
+                25 => 'nowhitespace',
+                26 => 'rule',
+                27 => 'allof',
+                28 => 'anyof',
+                29 => 'creditcard',
+                30 => 'writable',
             );
         }
 
@@ -935,6 +959,8 @@ namespace crodas\Validator {
                 'array' => 'class_e78c4f877ad52a7df58643507b799d92468cb63f',
                 'integer.tpl' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
                 'integer' => 'class_c76695457189d83cc740cf9405c0d1c6d8d3e786',
+                'int.tpl' => 'class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db',
+                'int' => 'class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db',
                 'alpha.tpl' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
                 'alpha' => 'class_63a832d9e94dc14f656368039d30aa1f8d6813b9',
                 'notempty.tpl' => 'class_b54ce34cf20d540ab7064acb34433250ac81a323',

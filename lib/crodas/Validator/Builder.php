@@ -41,8 +41,8 @@ use crodas\FileUtil\File;
 
 class Builder
 {
-    protected $functions;
-    protected $map;
+    protected $functions = array();
+    protected $map = array();
     protected $ns;
     protected $classes = [];
 

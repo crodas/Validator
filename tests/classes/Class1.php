@@ -48,7 +48,7 @@ class Class1
     /** @Optional @Object(['ArrayObject', 'Something']) */
     public $object_2;
 
-    /** @When([@Integer, @Positive, @notEmpty], "It should be a positive number of something not empty") */
+    /** @When([@Int, @Positive, @notEmpty], "It should be a positive number of something not empty") */
     public $something = "something";
 
     public function setTest($i)
