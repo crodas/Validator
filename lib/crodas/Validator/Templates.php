@@ -655,6 +655,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Base64.tpl
+     */
+    class class_cd579d0c68ed7b8a71a583e3a5562b65db53a249 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $self->result . " = (bool) preg_match('/^[a-zA-Z0-9\\/\\r\\n+]*={0,2}\$/', " . ($input) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Xdigit.tpl
      */
     class class_d04f38951493cdac32878e31062404988e3aebe3 extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
@@ -920,15 +943,16 @@ namespace crodas\Validator {
                 19 => 'positive',
                 20 => 'alnum',
                 21 => 'date',
-                22 => 'xdigit',
-                23 => 'charset',
-                24 => 'optional',
-                25 => 'nowhitespace',
-                26 => 'rule',
-                27 => 'allof',
-                28 => 'anyof',
-                29 => 'creditcard',
-                30 => 'writable',
+                22 => 'base64',
+                23 => 'xdigit',
+                24 => 'charset',
+                25 => 'optional',
+                26 => 'nowhitespace',
+                27 => 'rule',
+                28 => 'allof',
+                29 => 'anyof',
+                30 => 'creditcard',
+                31 => 'writable',
             );
         }
 
@@ -985,6 +1009,8 @@ namespace crodas\Validator {
                 'alnum' => 'class_fda5329c4d3473f86f472bff037149dac04a7069',
                 'date.tpl' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
                 'date' => 'class_eeac73f6af19611258f68e085a761dea60b94970',
+                'base64.tpl' => 'class_cd579d0c68ed7b8a71a583e3a5562b65db53a249',
+                'base64' => 'class_cd579d0c68ed7b8a71a583e3a5562b65db53a249',
                 'xdigit.tpl' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
                 'xdigit' => 'class_d04f38951493cdac32878e31062404988e3aebe3',
                 'charset.tpl' => 'class_889c8c99df4438b8d719d56e98239001ce98b33d',

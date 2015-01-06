@@ -51,6 +51,9 @@ class Class1
     /** @When([@Int, @Positive, @notEmpty], "It should be a positive number of something not empty") */
     public $something = "something";
 
+    /** @Base64 @Binary @Optional */
+    public $binary;
+
     public function setTest($i)
     {
         $this->test = $i;
