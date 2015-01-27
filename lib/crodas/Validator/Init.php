@@ -64,12 +64,29 @@ class Init
     {
         $parser      = new DirParser($this->dir);
         $annotations = $parser->getAnnotations();
-        return $annotations->get('Validate');
+        return $annotations->get('Validate', 'Class');
     }
 
     public function generate()
     {
         return $this->load();
+    }
+
+    protected function getAnnotationArgs(\Notoj\Annotation\Annotation $annotation)
+    {
+        $args = $annotation->getArgs();
+        if (empty($args[0])) {
+            $args[0] = array();
+        }
+        if (empty($args[1])) {
+            $args[1] = NULL;
+        }
+        if (is_string($args[0])) {
+            $args[1] = $args[0];
+            $args[0] = array();
+        }
+
+        return $args;
     }
 
     protected function getValidatorCode()
@@ -78,6 +95,37 @@ class Init
         $classes = [];
         $files   = $dirs = [];
         $builder->setNamespace($this->ns);
+        foreach ($this->GetAnnotations() as $annotation) {
+            $class = $annotation->getObject();
+            $props = array();
+            foreach ($class->getProperties() as $property) {
+                $props[$property->GetName()] = $property->isPublic();
+                $name = strtolower($class->getName()) . '::' . $property->getName();
+                $validator = $builder->createTest($name);
+                foreach ($property->GetAnnotations() as $ann) {
+                    if ($validator->ruleExists($ann->getName())) {
+                        $args = $this->getAnnotationARgs($ann);
+                        foreach ($args[0] as &$param) {
+                            if ($param instanceof \Notoj\Annotation\Annotation) {
+                                $xargs = $this->getAnnotationArgs($param);
+                                $param = $builder->rule($param->getName(), $xargs[0], $xargs[1]);
+                            }
+                        }
+                    }
+                    $validator->AddRule($ann->GetName(), $args[0], $args[1]);
+                }
+            }
+
+            $classes[$class->getName()] = array(
+                'file' => $class->getfile(),
+                'props' => $props
+            );
+            $files[] = $class->getFile();
+            $dirs[]  = dirname($class->getFile());
+
+        }
+
+        /*
         foreach ($this->GetAnnotations() as $object) {
             if (!$object->isClass()) continue;
             $props = [];
@@ -121,6 +169,7 @@ class Init
                 $dirs[]  = dirname($object['file']);
             }
         }
+        */
 
         $builder->mapClass($classes);
         $this->files = $files;

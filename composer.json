@@ -4,12 +4,12 @@
     "require": {
         "crodas/watch-files": "~0.1",
         "crodas/file-util": ">=0.1.7",
-        "crodas/notoj": "~0.1",
+        "crodas/notoj": "dev-develop",
         "crodas/simple-view-engine": ">=0.1.28",
         "crodas/cli": "~0.1"
     },
     "license": "BSD-4-Clause",
-    "version": "v0.1.5",
+    "version": "v0.1.6",
     "authors": [
         {
             "name": "César D. Rodas",
