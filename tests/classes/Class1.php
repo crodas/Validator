@@ -51,8 +51,8 @@ class Class1
     /** @When([@Integer, @Positive, @notEmpty], "It should be a positive number of something not empty") */
     public $something = "something";
 
-    public function setTest($i)
+    public function setTest($e)
     {
-        $this->test = $i;
+        $this->test = $e;
     }
 }
