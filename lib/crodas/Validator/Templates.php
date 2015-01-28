@@ -8,8 +8,8 @@
 namespace {
 
 
-    $GLOBALS['file_54c806dcc2842'] = array();
-    $GLOBALS['line_54c806dcc2842'] = array();
+    $GLOBALS['file_54c8e0bbeb8a0'] = array();
+    $GLOBALS['line_54c8e0bbeb8a0'] = array();
 
     class base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
     {
@@ -95,15 +95,15 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Between.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Between.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = " . ($input) . " >= ";
             var_export($args[0]);
@@ -111,7 +111,7 @@ namespace {
             var_export($args[1]);
             echo ";\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -146,7 +146,6 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
-            return $this->_render($vars, $return);
             try {
                 return $this->_render($vars, $return);
             } catch (\Exception $e) {
@@ -157,106 +156,106 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Body.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Body.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "<?php\n\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             if ($namespace) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo "namespace " . ($namespace) . ";\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 6;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
             echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 16;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 16;
             foreach($functions as $name => $body) {
 
                 $this->context['name'] = $name;
                 $this->context['body'] = $body;
-                $line_54c806dcc2842[$_54c806dcc2842] = 17;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 17;
                 echo "function " . ($name) . " (" . ($var) . ")\n{\n    \$is_scalar = is_scalar(";
-                $line_54c806dcc2842[$_54c806dcc2842] = 19;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 19;
                 echo $var . ");\n    ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 20;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 20;
                 echo $body->toCode($var) . "\n    return ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 21;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 21;
                 echo $body->result . ";\n}\n\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 24;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 24;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 25;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 25;
             echo "\nfunction validate(\$rule, \$input)\n{\n    switch (\$rule) {\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 29;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 29;
             foreach($funcmap as $name => $func) {
 
                 $this->context['name'] = $name;
                 $this->context['func'] = $func;
-                $line_54c806dcc2842[$_54c806dcc2842] = 30;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 30;
                 echo "        case ";
                 var_export($name);
                 echo ":\n            \$valid = ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 31;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 31;
                 echo $func . "(\$input);\n            break;\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 33;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 33;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 34;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 34;
             echo "        default:\n            \$valid = true;\n    }\n    return \$valid;\n\n}\n\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 41;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 41;
             if (count($classes) > 0) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 42;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 42;
                 echo "function get_object_properties(\$object)\n{\n    \$class = strtolower(get_class(\$object));\n    \$data  = [];\n    switch (\$class) {\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 47;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 47;
                 foreach($classes as $name => $props) {
 
                     $this->context['name'] = $name;
                     $this->context['props'] = $props;
-                    $line_54c806dcc2842[$_54c806dcc2842] = 48;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 48;
                     echo "    case ";
                     var_export(strtolower($name));
                     echo ":\n";
-                    $line_54c806dcc2842[$_54c806dcc2842] = 49;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 49;
                     foreach($props as $name => $is_public) {
 
                         $this->context['name'] = $name;
                         $this->context['is_public'] = $is_public;
-                        $line_54c806dcc2842[$_54c806dcc2842] = 50;
+                        $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 50;
                         if ($is_public) {
-                            $line_54c806dcc2842[$_54c806dcc2842] = 51;
+                            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 51;
                             echo "                \$data[";
                             var_export($name);
                             echo "] = \$object->" . ($name) . ";\n";
-                            $line_54c806dcc2842[$_54c806dcc2842] = 52;
+                            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 52;
                         }
                         else {
-                            $line_54c806dcc2842[$_54c806dcc2842] = 53;
+                            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 53;
                             echo "                \$property = new \\ReflectionProperty(\$object, ";
                             var_export($name);
                             echo ");\n                \$property->setAccessible(true);\n                \$data[";
-                            $line_54c806dcc2842[$_54c806dcc2842] = 55;
+                            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 55;
                             var_export($name);
                             echo "] = \$property->getValue(\$object);\n";
-                            $line_54c806dcc2842[$_54c806dcc2842] = 56;
+                            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 56;
                         }
-                        $line_54c806dcc2842[$_54c806dcc2842] = 57;
+                        $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 57;
                     }
-                    $line_54c806dcc2842[$_54c806dcc2842] = 58;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 58;
                     echo "        break;\n";
-                    $line_54c806dcc2842[$_54c806dcc2842] = 59;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 59;
                 }
-                $line_54c806dcc2842[$_54c806dcc2842] = 60;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 60;
                 echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 65;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 65;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 66;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 66;
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -301,25 +300,25 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Charset.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Charset.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "\$expected = ";
             var_export($args);
             echo ";\n\$encoding = mb_detect_encoding(";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $input . ", \$expected, true);\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             echo $self->result . " = in_array(\$encoding, \$expected, true);\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -364,19 +363,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Alnum.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Alnum.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = ctype_alnum(" . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -421,19 +420,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Bool.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Bool.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_bool(" . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -478,35 +477,35 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'AnyOf.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'AnyOf.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = false;\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             foreach($args as $rule) {
 
                 $this->context['rule'] = $rule;
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (";
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo $rule->result . ") {\n        ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
                 echo $self->result . " = true;\n        goto exit_";
-                $line_54c806dcc2842[$_54c806dcc2842] = 6;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
                 echo sha1($self->result) . ";\n    }\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 9;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
             echo "exit_" . (sha1($self->result)) . ":\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -551,21 +550,21 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'CountryCode.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'CountryCode.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "\$countryCodeList = array(\n    'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW',\n    'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN',\n    'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG',\n    'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ',\n    'DE', 'DJ', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ',\n    'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM',\n    'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT',\n    'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO',\n    'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB',\n    'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF',\n    'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV',\n    'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR',\n    'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS',\n    'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE',\n    'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX',\n    'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR',\n    'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG',\n    'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW'\n);\n\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 22;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 22;
             echo $self->result . " = in_array(strtoupper(" . ($input) . "), \$countryCodeList);\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -610,19 +609,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'MinLength.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'MinLength.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = strlen(" . ($input) . ") >= " . ($args[0]) . ";\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -667,23 +666,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Array.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Array.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_array(" . ($input) . ") || (" . ($input) . " instanceof \\ArrayAccess\n    && ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $input . " instanceof \\Traversable\n    && ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             echo $input . " instanceof \\Countable);\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -728,23 +727,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Writable.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Writable.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "if (" . ($input) . " instanceof \\SplFileInfo) {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $self->result . " = " . ($input) . "->isWritable();\n} else {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 4;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
             echo $self->result . " = (is_string(" . ($input) . ") && is_writable(" . ($input) . "));\n}\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -789,19 +788,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Integer.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Integer.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_numeric(" . ($input) . ") && (int)" . ($input) . " == " . ($input) . ";\n\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -846,19 +845,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Email.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Email.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_string(" . ($input) . ") && filter_var(" . ($input) . ", FILTER_VALIDATE_EMAIL);\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -893,7 +892,6 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
-            return $this->_render($vars, $return);
             try {
                 return $this->_render($vars, $return);
             } catch (\Exception $e) {
@@ -904,35 +902,35 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Rule.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Rule.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             if ($scalar) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 2;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
                 echo "    if (\$is_scalar) {\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 crodas\Validator\Templates::exec($type, $this->context);
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo "    } else {\n        ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
                 echo $self->result . " = false;\n    } \n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 7;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 7;
             }
             else {
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
                 crodas\Validator\Templates::exec($type, $this->context);
-                $line_54c806dcc2842[$_54c806dcc2842] = 9;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 10;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 10;
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -977,19 +975,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'NoWhitespace.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'NoWhitespace.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = !preg_match('#\\s#', " . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1034,19 +1032,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Max.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Max.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = " . ($input) . " <= " . ($args[0]) . ";\n\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1091,19 +1089,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'NotEmpty.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'NotEmpty.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = !empty(" . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1148,46 +1146,46 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Date.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Date.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "if (" . ($input) . " instanceof \\DateTime) {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $self->result . " = true;\n} elseif (!is_string(";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             echo $input . ")) {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 4;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
             echo $self->result . " = false;\n} else {\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 6;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
             if (empty($args[0])) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 7;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 7;
                 echo "        " . ($self->result) . " = false !== strtotime(" . ($input) . ");\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             }
             else {
-                $line_54c806dcc2842[$_54c806dcc2842] = 9;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
                 echo "        \$dateFromFormat = \\DateTime::createFromFormat(";
                 var_export($args[0]);
                 echo ", " . ($input) . ");\n        ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 10;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 10;
                 echo $self->result . " = \$dateFromFormat\n                && ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 11;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 11;
                 echo $input . " === date(";
                 var_export($args[0]);
                 echo ", \$dateFromFormat->getTimestamp());\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 12;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 12;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 13;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 13;
             echo "}\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1232,19 +1230,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Positive.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Positive.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_numeric(" . ($input) . ") && " . ($input) . " > 0;\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1289,19 +1287,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Xdigit.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Xdigit.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = ctype_xdigit(" . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1346,19 +1344,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Min.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Min.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = " . ($input) . " >= " . ($args[0]) . ";\n\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1403,19 +1401,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Alpha.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Alpha.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = ctype_alpha(" . ($input) . ");\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1450,7 +1448,6 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
-            return $this->_render($vars, $return);
             try {
                 return $this->_render($vars, $return);
             } catch (\Exception $e) {
@@ -1461,35 +1458,35 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'AllOf.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'AllOf.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = true;\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             foreach($args as $rule) {
 
                 $this->context['rule'] = $rule;
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (!";
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo $rule->result . ") {\n        ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
                 echo $self->result . " = false;\n        goto exit_";
-                $line_54c806dcc2842[$_54c806dcc2842] = 6;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
                 echo sha1($self->result) . ";\n    }\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 9;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
             echo "exit_" . (sha1($self->result)) . ":\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1534,53 +1531,53 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Object.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Object.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = is_object(" . ($input) . ");\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             if (!empty($args)) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 echo "if (" . ($self->result) . ") {\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 foreach($args as $i => $class) {
 
                     $this->context['i'] = $i;
                     $this->context['class'] = $class;
-                    $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
                     echo "        \$type_" . ($i) . " = ";
                     var_export($class);
                     echo ";\n";
-                    $line_54c806dcc2842[$_54c806dcc2842] = 6;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
                 }
-                $line_54c806dcc2842[$_54c806dcc2842] = 7;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 7;
                 echo "    \$val = \n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
                 foreach($args as $i => $class) {
 
                     $this->context['i'] = $i;
                     $this->context['class'] = $class;
-                    $line_54c806dcc2842[$_54c806dcc2842] = 9;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
                     echo "        (" . ($input) . " instanceof \$type_" . ($i) . ") ||\n";
-                    $line_54c806dcc2842[$_54c806dcc2842] = 10;
+                    $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 10;
                 }
-                $line_54c806dcc2842[$_54c806dcc2842] = 11;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 11;
                 echo "        false;\n\n    ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 13;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 13;
                 echo $self->result . " = \$val;\n}\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 15;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 15;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 16;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 16;
             echo "\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1625,37 +1622,37 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Not.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Not.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = false;\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             foreach($args as $rule) {
 
                 $this->context['rule'] = $rule;
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 echo "    " . ($rule->toCode($input, $self)) . "\n    if (";
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo $rule->result . ") {\n        ";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
                 echo $self->result . " = true;\n        goto exit_";
-                $line_54c806dcc2842[$_54c806dcc2842] = 6;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
                 echo sha1($self->result) . ";\n    }\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 8;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 9;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 9;
             echo "exit_" . (sha1($self->result)) . ":\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 10;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 10;
             echo $self->result . " = !" . ($self->result) . ";\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1700,29 +1697,29 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'When.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'When.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $args[0]->toCode($input, $self) . "\n\nif (";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             echo $args[0]->result . ") {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 4;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
             echo $args[1]->toCode($input, $self) . "\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 5;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
             echo $self->result . " = " . ($args[1]->result) . ";\n} else {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 7;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 7;
             echo $args[2]->toCode($input, $self) . "\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 8;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             echo $self->result . " = " . ($args[2]->result) . ";\n}\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1767,26 +1764,84 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Error.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Error.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             if ($self->msg) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 2;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
                 echo "if (!" . ($self->result) . ") {\n        throw new \\UnexpectedValueException(";
-                $line_54c806dcc2842[$_54c806dcc2842] = 3;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
                 echo $self->getErrorMessage() . ");\n}\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 6;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Int.tpl
+     */
+    class class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db extends base_template_20e5750a0f2104effacdf0b83f627f8af5fd0276
+    {
+
+        public function hasSection($name)
+        {
+
+            return false;
+        }
+
+
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            if (!$this->hasSection($name)) {
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+                return "";
+            }
+
+        }
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\Validator\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Int.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
+
+            crodas\Validator\Templates::exec("integer", $this->context);
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
+
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1831,34 +1886,34 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Optional.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Optional.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = true;\nif (empty(";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $input . ")) {\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             if (!empty($parent)) {
-                $line_54c806dcc2842[$_54c806dcc2842] = 4;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 4;
                 echo "        goto exit_" . (sha1($parent->result)) . ";\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 5;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 5;
             }
             else {
-                $line_54c806dcc2842[$_54c806dcc2842] = 6;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 6;
                 echo "        return true;\n";
-                $line_54c806dcc2842[$_54c806dcc2842] = 7;
+                $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 7;
             }
-            $line_54c806dcc2842[$_54c806dcc2842] = 8;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 8;
             echo "}\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1903,21 +1958,21 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'Length.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'Length.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "\$len = strlen(" . ($input) . ");\n";
-            $line_54c806dcc2842[$_54c806dcc2842] = 2;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 2;
             echo $self->result . " = \$len >= " . ($args[0]) . " && \$len <= " . ($args[1]) . ";\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -1962,19 +2017,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'MaxLength.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'MaxLength.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo $self->result . " = strlen(" . ($input) . ") <= " . ($args[0]) . ";\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -2019,23 +2074,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_54c806dcc2842 = array_push($file_54c806dcc2842, 'CreditCard.tpl') - 1;
-            $line_54c806dcc2842[$_54c806dcc2842] = 1;
+            $_54c8e0bbeb8a0 = array_push($file_54c8e0bbeb8a0, 'CreditCard.tpl') - 1;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 1;
 
             echo "\$tmp = preg_replace('([^0-9])', '', " . ($input) . ");\nif (empty(\$tmp)) {\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 3;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 3;
             echo $self->result . " = false;\n} else {\n    \$sum = 0;\n    \$tmp = strrev(\$tmp);\n    for (\$i = 0; \$i < strlen(\$tmp); \$i++) {\n        \$current = substr(\$tmp, \$i, 1);\n        if (\$i % 2 == 1) {\n            \$current *= 2;\n            if (\$current > 9) {\n                \$firstDigit = \$current % 10;\n                \$secondDigit = (\$current - \$firstDigit) / 10;\n                \$current = \$firstDigit + \$secondDigit;\n            }\n        }\n        \$sum += \$current;\n    }\n\n    ";
-            $line_54c806dcc2842[$_54c806dcc2842] = 20;
+            $line_54c8e0bbeb8a0[$_54c8e0bbeb8a0] = 20;
             echo $self->result . " = (\$sum % 10 == 0);\n}\n";
 
-            array_pop($file_54c806dcc2842);
+            array_pop($file_54c8e0bbeb8a0);
 
             if ($return) {
                 return ob_get_clean();
@@ -2057,15 +2112,15 @@ namespace crodas\Validator {
 
         public function getSimpleViewTrace()
         {
-            global $file_54c806dcc2842, $line_54c806dcc2842;
+            global $file_54c8e0bbeb8a0, $line_54c8e0bbeb8a0;
 
             $traces = $this->e->getTrace();
             $i = 0;
             foreach ($traces as &$trace) {
                 if (!empty($trace['file'])
-                    && $trace['file'] == $this->file && !empty($file_54c806dcc2842[$i])) {
-                    $trace['file'] = $file_54c806dcc2842[$i];
-                    $trace['line'] = $line_54c806dcc2842[$i];
+                    && $trace['file'] == $this->file && !empty($file_54c8e0bbeb8a0[$i])) {
+                    $trace['file'] = $file_54c8e0bbeb8a0[$i];
+                    $trace['line'] = $line_54c8e0bbeb8a0[$i];
                     ++$i;
                 }
                 if (empty($trace['file'])) {
@@ -2130,10 +2185,11 @@ namespace crodas\Validator {
                 23 => 'not',
                 24 => 'when',
                 25 => 'error',
-                26 => 'optional',
-                27 => 'length',
-                28 => 'maxlength',
-                29 => 'creditcard',
+                26 => 'int',
+                27 => 'optional',
+                28 => 'length',
+                29 => 'maxlength',
+                30 => 'creditcard',
             );
         }
 
@@ -2210,6 +2266,8 @@ namespace crodas\Validator {
                 'when' => 'class_3402ae266a134bd7679147b3a881ffd937d42fd7',
                 'error.tpl' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
                 'error' => 'class_873c1a91cea8cbb245abe554d24748c8fe4e84b9',
+                'int.tpl' => 'class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db',
+                'int' => 'class_58c3145a26f634f7e9aa3b55c3adda0f53e3c6db',
                 'optional.tpl' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
                 'optional' => 'class_73177f083ce4946c03c09151e30c22c4883d8a97',
                 'length.tpl' => 'class_87373bac58cc91a097cde8b6f75577026c5bdf85',
