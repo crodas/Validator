@@ -130,6 +130,9 @@ class AllTest extends \phpunit_framework_testcase
             ['integer', 099, true],
             ['integer', 0x99, true],
 
+            ['base64', base64_encode(uniqid(true)), true],
+            ['base64', hex2bin(uniqid(true)), false],
+
             ['notempty', NULL, false],
             ['notempty', '', false],
             ['notempty', [], false],
