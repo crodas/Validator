@@ -62,9 +62,8 @@ class Init
 
     protected function getAnnotations()
     {
-        $parser      = new DirParser($this->dir);
-        $annotations = $parser->getAnnotations();
-        return $annotations->get('Validate', 'Class');
+        $parser = new DirParser($this->dir);
+        return $parser->getClasseS('Validate');
     }
 
     public function generate()
@@ -95,8 +94,7 @@ class Init
         $classes = [];
         $files   = $dirs = [];
         $builder->setNamespace($this->ns);
-        foreach ($this->GetAnnotations() as $annotation) {
-            $class = $annotation->getObject();
+        foreach ($this->GetAnnotations() as $class) {
             $props = array();
             foreach ($class->getProperties() as $property) {
                 $props[$property->GetName()] = $property->isPublic();
@@ -111,8 +109,8 @@ class Init
                                 $param = $builder->rule($param->getName(), $xargs[0], $xargs[1]);
                             }
                         }
+                        $validator->AddRule($ann->GetName(), $args[0], $args[1]);
                     }
-                    $validator->AddRule($ann->GetName(), $args[0], $args[1]);
                 }
             }
 
