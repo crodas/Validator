@@ -120,7 +120,7 @@ class Builder
     {
         foreach ($map as $name => $class) {
             if (Empty($class['props']) || !is_array($class['props'])) {
-                throw new \Exception("Invalid class map for $name");
+                continue;
             }
             $this->classes[$name] = $class['props'];
         }
