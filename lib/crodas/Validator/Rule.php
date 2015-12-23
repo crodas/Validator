@@ -91,7 +91,7 @@ class Rule
     public function toCode($input, $parent = NULL)
     {
         $self   = $this;
-        $args   = $this->args;
+        $args   = (array)$this->args;
         $type   = $this->type;
         $scalar = $this->testScalar;
 

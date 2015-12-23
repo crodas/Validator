@@ -12,6 +12,7 @@ class AllTest extends \phpunit_framework_testcase
         'minlength' => [5],
         'maxlength' => [50],
         'charset'   => ['ascii'],
+        'regex' => ['/[0-9]/'],
     ];
     
     protected static $dont = [

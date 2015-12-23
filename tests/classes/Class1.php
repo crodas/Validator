@@ -11,6 +11,9 @@ class Class1
      */
     public $foo;
 
+    /** @Optional @RegExp(["/[0-9]/"], 'It must have at least one number') */
+    public $regex;
+
     /**
      *  @Optional
      *  @Between([0, 23], "Invalid time format")
