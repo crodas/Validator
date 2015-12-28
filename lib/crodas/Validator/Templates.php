@@ -655,14 +655,17 @@ namespace {
                 ob_start();
             }
 
-            echo "<?php\n\n";
+            echo "<?php\n";
             if ($namespace) {
                 echo "namespace " . ($namespace) . ";\n";
             }
             else {
                 echo "namespace crodas\\Validator\\ns" . (uniqid(true)) . ";\n";
             }
-            echo "\nif (!is_callable('_')) {\n    function _(\$a) { return \$a; }\n}\n\n";
+            echo "\n";
+            if (!is_callable('_')) {
+                echo "// gettext was not detected at compile time, so we check at runtime\nif (!is_callable('_')) {\n    function _(\$a) { return \$a; }\n}\n";
+            }
             foreach($functions as $name => $body) {
 
                 $this->context['name'] = $name;

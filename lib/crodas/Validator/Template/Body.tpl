@@ -1,15 +1,16 @@
 <?php
-
 @if ($namespace) 
 namespace {{$namespace}};
 @else
 namespace crodas\Validator\ns{{uniqid(true)}};
 @end
 
+@if (!is_callable('_')) 
+// gettext was not detected at compile time, so we check at runtime
 if (!is_callable('_')) {
     function _($a) { return $a; }
 }
-
+@end
 @foreach ($functions as $name => $body)
 function {{$name}} ({{$var}})
 {
