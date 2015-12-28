@@ -39,13 +39,17 @@ namespace crodas\Validator;
 /**
  *  @package crodas\Validator
  *  @param Object $object   Object to validate
+ *  @param Array &$errors   Set the array with information about errors
  *
  *  @return Bool
  */
 function validate($object, & $errors)
 {
-    $class     = get_class($object);
-    $validator = new Runtime($class);
-    $errors    = $validator->validate($object);
+    static $validators = [];
+    $class  = get_class($object);
+    if (empty($validtors[$class])) {
+        $validators[$class] = new Runtime($class);
+    }
+    $errors  = $validators[$class]->validate($object);
     return empty($errors);
 }
