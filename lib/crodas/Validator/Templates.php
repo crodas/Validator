@@ -662,7 +662,7 @@ namespace {
             else {
                 echo "namespace crodas\\Validator\\ns" . (uniqid(true)) . ";\n";
             }
-            echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
+            echo "\nif (!is_callable('_')) {\n    function _(\$a) { return \$a; }\n}\n\n";
             foreach($functions as $name => $body) {
 
                 $this->context['name'] = $name;
@@ -691,17 +691,23 @@ namespace {
                     $this->context['props'] = $props;
                     echo "    case ";
                     var_export(strtolower($name));
-                    echo ":\n";
+                    echo ":\n        \$data = array(\n";
                     foreach($props as $name => $is_public) {
 
                         $this->context['name'] = $name;
                         $this->context['is_public'] = $is_public;
                         if ($is_public) {
-                            echo "                \$data[";
+                            echo "                ";
                             var_export($name);
-                            echo "] = \$object->" . ($name) . ";\n";
+                            echo " => \$object->" . ($name) . ",\n";
                         }
-                        else {
+                    }
+                    echo "        );\n";
+                    foreach($props as $name => $is_public) {
+
+                        $this->context['name'] = $name;
+                        $this->context['is_public'] = $is_public;
+                        if (!$is_public) {
                             echo "                \$property = new \\ReflectionProperty(\$object, ";
                             var_export($name);
                             echo ");\n                \$property->setAccessible(true);\n                \$data[";
