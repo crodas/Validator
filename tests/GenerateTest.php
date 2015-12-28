@@ -4,8 +4,32 @@
 use crodas\Validator;
 use test\FormValidator as f;
 
+require __DIR__ . '/classes/Class2.php';
+
 class GenerateTest extends \phpunit_framework_testcase
 {
+    public function testAnnotation1Class2()
+    {
+        $foo = new Class2;
+        $foo->age = 'foobar';
+        $this->assertTrue(Validator\validate($foo, $errors));
+        $this->assertTrue(empty($errors));
+
+        $foo->foo  = 'fo';
+        $this->assertFalse(Validator\validate($foo, $errors));
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['foo']));
+        $this->assertTrue(strpos($errors['foo']->getMessage(), 'short') > 0);
+        $this->assertEquals(count($errors), 1);
+
+        $foo->foo  = 'fofofofofofofofoffo';
+        $this->assertFalse(Validator\validate($foo, $errors));
+        $this->assertTrue(!empty($errors));
+        $this->assertTrue(!empty($errors['foo']));
+        $this->assertTrue(strpos($errors['foo']->getMessage(), 'long') > 0);
+        $this->assertEquals(count($errors), 1);
+    }
+
     public function testAnnotation1()
     {
         $val = get_validator();

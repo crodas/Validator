@@ -107,13 +107,14 @@ abstract class BaseValidator
                     }
                 }
             }
+            $file = is_callable(array($class, 'getfile')) ? $class->getFile()  : $class->getFileName();
 
             $classes[$class->getName()] = array(
-                'file' => $class->getfile(),
+                'file' => $file,
                 'props' => $props
             );
-            $files[] = $class->getFile();
-            $dirs[]  = dirname($class->getFile());
+            $files[] = $file;
+            $dirs[]  = dirname($file);
 
         }
 

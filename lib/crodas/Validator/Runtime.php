@@ -2,10 +2,10 @@
 
 namespace crodas\Validator;
 
-use ReflectionClass;
 use crodas\FileUtil\File;
 use WatchFiles\Watch;
 use Notoj\Notoj;
+use Notoj\ReflectionClass;
 
 class Runtime extends BaseValidator
 {
@@ -23,8 +23,6 @@ class Runtime extends BaseValidator
 
     public function getAnnotations()
     {
-        $reflection  = new ReflectionClass($this->className);
-        $parser = new \Notoj\File($reflection->getFileName());
-        return $parser->getClasses('Validate');
+        return [new ReflectionClass($this->className)];
     }
 }
