@@ -19,6 +19,9 @@
     "autoload": {
         "psr-0": {
             "crodas": "lib/"
-        }
+        },
+        "files": [ 
+            "lib/crodas/Validator/Function.php"
+        ]
     }
 }

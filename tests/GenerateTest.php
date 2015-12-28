@@ -1,7 +1,7 @@
 <?php
 
-use ActiveMongo2\Tests\Document\PostNoTitleDocument;
 
+use crodas\Validator;
 use test\FormValidator as f;
 
 class GenerateTest extends \phpunit_framework_testcase
@@ -12,7 +12,9 @@ class GenerateTest extends \phpunit_framework_testcase
         $foo = new Class1;
         $foo->age = 44;
         $errors = $val->validate($foo);
-        $this->AssertTrue(empty($errors));
+        $this->assertTrue(empty($errors));
+        $this->assertTrue(Validator\validate($foo, $errors));
+        $this->assertTrue(empty($errors));
     }
 
     public function testAnnotation2()
@@ -27,6 +29,9 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(!empty($errors['test']));
         $this->assertTrue(strpos($errors['test']->getMessage(), 'invalid') > 0);
         $this->assertEquals(count($errors), 1);
+
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationAndDates()
@@ -42,14 +47,21 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(strpos($errors['date']->getMessage(), 'format') > 0);
         $this->assertEquals(count($errors), 1);
 
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
+
         $foo->date     = NULL;
         $foo->any_date = "30-09-2013";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->date = new \Datetime;
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationAndBool()
@@ -62,14 +74,20 @@ class GenerateTest extends \phpunit_framework_testcase
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['enabled']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->enabled = false;
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->enabled = true;
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationAndRegExpr()
@@ -81,11 +99,15 @@ class GenerateTest extends \phpunit_framework_testcase
         $foo->regex = "cesar1";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->regex = "cesar";
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['regex']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationAndCreditCard()
@@ -98,10 +120,14 @@ class GenerateTest extends \phpunit_framework_testcase
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['cc']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->cc   = "4111 1111 1111 1111";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationWhen()
@@ -113,24 +139,34 @@ class GenerateTest extends \phpunit_framework_testcase
         $foo->something = 1;
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->something = "sdasda";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->something = "99";
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->something = "";
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['something']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->something = -99;
         $errors = $val->validate($foo);
         $this->assertTrue(!empty($errors));
         $this->assertTrue(!empty($errors['something']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationWithScalarNonScalar()
@@ -145,6 +181,8 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertEquals(count($errors), 2);
         $this->assertTrue(!empty($errors['age']));
         $this->assertTrue(!empty($errors['foo']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationArray()
@@ -159,14 +197,20 @@ class GenerateTest extends \phpunit_framework_testcase
         $this->assertTrue(!empty($errors));
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['foobar']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->foobar  = [33];
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->foobar  = new \ArrayObject([3]);
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationObjectNoType()
@@ -180,15 +224,21 @@ class GenerateTest extends \phpunit_framework_testcase
 
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['object_1']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->object_1 = [19];
         $errors = $val->validate($foo);
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['object_1']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->object_1 = new \stdclass;
         $errors = $val->validate($foo);
         $this->assertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
     }
 
@@ -203,20 +253,28 @@ class GenerateTest extends \phpunit_framework_testcase
 
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['object_2']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->object_2 = [19];
         $errors = $val->validate($foo);
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['object_2']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->object_2 = new \stdclass;
         $errors = $val->validate($foo);
         $this->assertEquals(count($errors), 1);
         $this->assertTrue(!empty($errors['object_2']));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
 
         $foo->object_2 = new \ArrayObject;
         $errors = $val->validate($foo);
         $this->AssertTrue(empty($errors));
+        Validator\validate($foo, $errors1);
+        $this->assertEquals($errors, $errors1);
     }
 
     public function testAnnotationRaw()

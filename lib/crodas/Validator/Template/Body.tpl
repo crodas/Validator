@@ -2,6 +2,8 @@
 
 @if ($namespace) 
 namespace {{$namespace}};
+@else
+namespace crodas\Validator\ns{{uniqid(true)}};
 @end
 
 if (!is_callable('_')) {
@@ -63,3 +65,8 @@ function get_object_properties($object)
     return $data;
 }
 @end
+
+return array(
+    'mcallback' => __NAMESPACE__ . '\get_object_properties',
+    'callback' => __NAMESPACE__ . '\validate',
+);

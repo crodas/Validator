@@ -1,59 +1,24 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a123468aaed9241afa39f362a24c17ae",
+    "hash": "b0b13bd6df31244fc01f332a47fa027d",
+    "content-hash": "45c95610d906694180a83b51331f42fa",
     "packages": [
         {
-            "name": "crodas/artifex",
-            "version": "0.5.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/crodas/Artifex.git",
-                "reference": "5990f8327f3825ff08d0bc305eadd4bb97c42cab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Artifex/zipball/5990f8327f3825ff08d0bc305eadd4bb97c42cab",
-                "reference": "5990f8327f3825ff08d0bc305eadd4bb97c42cab",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Artifex": "lib/"
-                },
-                "classmap": [
-                    "lib/Artifex.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "César D. Rodas",
-                    "email": "crodas@php.net"
-                }
-            ],
-            "description": "Macros on steroids. The easiest way of generating code.",
-            "time": "2013-10-28 01:17:54"
-        },
-        {
             "name": "crodas/class-info",
-            "version": "v0.1.16",
+            "version": "v0.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ClassInfo.git",
-                "reference": "13cce6f3ef526430e0bba2b119054a8af6131d95"
+                "reference": "d8e15a64b2b31b5c3ebece582018eee86e9a2638"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ClassInfo/zipball/13cce6f3ef526430e0bba2b119054a8af6131d95",
-                "reference": "13cce6f3ef526430e0bba2b119054a8af6131d95",
+                "url": "https://api.github.com/repos/crodas/ClassInfo/zipball/d8e15a64b2b31b5c3ebece582018eee86e9a2638",
+                "reference": "d8e15a64b2b31b5c3ebece582018eee86e9a2638",
                 "shasum": ""
             },
             "require": {
@@ -76,25 +41,26 @@
                 }
             ],
             "description": "Get classes and functions defined in a given file",
-            "time": "2015-02-12 23:49:51"
+            "time": "2015-05-02 15:25:50"
         },
         {
             "name": "crodas/cli",
-            "version": "v0.1.1",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/cli.git",
-                "reference": "c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db"
+                "reference": "c4a5cae42caa2891f94b69c8c2cf908f0db305a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/cli/zipball/c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db",
-                "reference": "c0a85ec0a15e7dc6445d98dfdbb40fb22cde35db",
+                "url": "https://api.github.com/repos/crodas/cli/zipball/c4a5cae42caa2891f94b69c8c2cf908f0db305a0",
+                "reference": "c4a5cae42caa2891f94b69c8c2cf908f0db305a0",
                 "shasum": ""
             },
             "require": {
-                "crodas/notoj": "*",
-                "symfony/console": "*"
+                "crodas/file-util": "^0.1.14",
+                "crodas/notoj": "^1.0.5",
+                "symfony/console": "^2.7"
             },
             "type": "library",
             "autoload": {
@@ -113,20 +79,20 @@
                 }
             ],
             "description": "Simple and silly abstraction on top of symfony/console",
-            "time": "2013-12-30 05:06:25"
+            "time": "2015-08-30 17:27:24"
         },
         {
             "name": "crodas/file-util",
-            "version": "v0.1.16",
+            "version": "v0.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/FileUtils.git",
-                "reference": "0a2876ccbbeadfd077010a6e99bf46fe6f0178a6"
+                "reference": "57195fbfea90200361b7b04023687154a7c5dcd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/FileUtils/zipball/0a2876ccbbeadfd077010a6e99bf46fe6f0178a6",
-                "reference": "0a2876ccbbeadfd077010a6e99bf46fe6f0178a6",
+                "url": "https://api.github.com/repos/crodas/FileUtils/zipball/57195fbfea90200361b7b04023687154a7c5dcd7",
+                "reference": "57195fbfea90200361b7b04023687154a7c5dcd7",
                 "shasum": ""
             },
             "type": "library",
@@ -146,25 +112,25 @@
                 }
             ],
             "description": "Useful libraries to manipulate files",
-            "time": "2015-01-06 01:42:03"
+            "time": "2015-07-31 06:29:10"
         },
         {
             "name": "crodas/notoj",
-            "version": "v1.0.3",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/Notoj.git",
-                "reference": "4065b0407bcfa71e125f1c1149ce08ed491be33d"
+                "reference": "83084bc95729e8f05a64accfbcb6ff3da855bb90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Notoj/zipball/4065b0407bcfa71e125f1c1149ce08ed491be33d",
-                "reference": "4065b0407bcfa71e125f1c1149ce08ed491be33d",
+                "url": "https://api.github.com/repos/crodas/Notoj/zipball/83084bc95729e8f05a64accfbcb6ff3da855bb90",
+                "reference": "83084bc95729e8f05a64accfbcb6ff3da855bb90",
                 "shasum": ""
             },
             "require": {
-                "crodas/class-info": ">=0.1.11",
-                "crodas/file-util": ">=0.1.14",
+                "crodas/class-info": "^0.1.11",
+                "crodas/file-util": "^0.1.18",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -184,62 +150,29 @@
                 }
             ],
             "description": "Annotation parser. Uses reflection and provides cache out of the box.",
-            "time": "2015-03-21 14:23:43"
-        },
-        {
-            "name": "crodas/path",
-            "version": "v0.1.16",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:crodas/Path.git",
-                "reference": "690b90e78f9263b468d358553dd7a289373a4b12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/crodas/Path/zipball/690b90e78f9263b468d358553dd7a289373a4b12",
-                "reference": "690b90e78f9263b468d358553dd7a289373a4b12",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "crodas": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-4-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "César D. Rodas",
-                    "email": "crodas@php.net"
-                }
-            ],
-            "description": "Useful libraries to manipulate files",
-            "time": "2015-01-06 01:42:03"
+            "time": "2015-12-23 01:57:50"
         },
         {
             "name": "crodas/service-provider",
-            "version": "v0.1.3",
+            "version": "v0.1.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ServiceProvider.git",
-                "reference": "c8437c3ecd485ce5fa1527c84427cea9a0f0775d"
+                "reference": "2d2a0e088da8e22eb52a204d5d61173e958ae912"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ServiceProvider/zipball/c8437c3ecd485ce5fa1527c84427cea9a0f0775d",
-                "reference": "c8437c3ecd485ce5fa1527c84427cea9a0f0775d",
+                "url": "https://api.github.com/repos/crodas/ServiceProvider/zipball/2d2a0e088da8e22eb52a204d5d61173e958ae912",
+                "reference": "2d2a0e088da8e22eb52a204d5d61173e958ae912",
                 "shasum": ""
             },
             "require": {
-                "crodas/artifex": "*",
-                "crodas/notoj": "*",
-                "crodas/path": "*",
-                "crodas/watch-files": "*",
+                "crodas/file-util": "~0.1",
+                "crodas/notoj": "^1.0",
+                "crodas/simple-view-engine": "~0.1",
+                "crodas/watch-files": "~0.1",
                 "seld/jsonlint": "*",
-                "symfony/yaml": "*"
+                "symfony/yaml": "~2.6"
             },
             "type": "library",
             "autoload": {
@@ -258,7 +191,7 @@
                 }
             ],
             "description": "Little configuration manager and dependency injection",
-            "time": "2013-10-28 17:52:18"
+            "time": "2015-12-21 23:23:25"
         },
         {
             "name": "crodas/simple-view-engine",
@@ -386,20 +319,20 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "863ae85c6d3ef60ca49cb12bd051c4a0648c40c4"
+                "reference": "66834d3e3566bb5798db7294619388786ae99394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/863ae85c6d3ef60ca49cb12bd051c4a0648c40c4",
-                "reference": "863ae85c6d3ef60ca49cb12bd051c4a0648c40c4",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/66834d3e3566bb5798db7294619388786ae99394",
+                "reference": "66834d3e3566bb5798db7294619388786ae99394",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^5.3 || ^7.0"
             },
             "bin": [
                 "bin/jsonlint"
@@ -428,31 +361,30 @@
                 "parser",
                 "validator"
             ],
-            "time": "2015-01-04 21:18:15"
+            "time": "2015-11-21 02:21:41"
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.5",
-            "target-dir": "Symfony/Component/Console",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "53f86497ccd01677e22435cfb7262599450a90d1"
+                "url": "https://github.com/symfony/console.git",
+                "reference": "2e06a5ccb19dcf9b89f1c6a677a39a8df773635a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/53f86497ccd01677e22435cfb7262599450a90d1",
-                "reference": "53f86497ccd01677e22435cfb7262599450a90d1",
+                "url": "https://api.github.com/repos/symfony/console/zipball/2e06a5ccb19dcf9b89f1c6a677a39a8df773635a",
+                "reference": "2e06a5ccb19dcf9b89f1c6a677a39a8df773635a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9",
+                "symfony/polyfill-mbstring": "~1.0"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1",
-                "symfony/phpunit-bridge": "~2.7",
-                "symfony/process": "~2.1"
+                "symfony/event-dispatcher": "~2.1|~3.0.0",
+                "symfony/process": "~2.1|~3.0.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
@@ -462,13 +394,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Console\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -476,49 +411,48 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-13 17:37:22"
+            "homepage": "https://symfony.com",
+            "time": "2015-12-22 10:25:57"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.6.5",
-            "target-dir": "Symfony/Component/Finder",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Finder.git",
-                "reference": "bebc7479c566fa4f14b9bcef9e32e719eabec74e"
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "8617895eb798b6bdb338321ce19453dc113e5675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/bebc7479c566fa4f14b9bcef9e32e719eabec74e",
-                "reference": "bebc7479c566fa4f14b9bcef9e32e719eabec74e",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/8617895eb798b6bdb338321ce19453dc113e5675",
+                "reference": "8617895eb798b6bdb338321ce19453dc113e5675",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Finder\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -526,49 +460,51 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-12 10:28:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-12-05 11:13:14"
         },
         {
-            "name": "symfony/yaml",
-            "version": "v2.6.5",
-            "target-dir": "Symfony/Component/Yaml",
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Yaml.git",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d"
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/49ff736bd5d41f45240cec77b44967d76e0c3d25",
+                "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
+            "suggest": {
+                "ext-mbstring": "For best performance"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Yaml\\": ""
-                }
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -576,17 +512,73 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
                 },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-20 09:19:13"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
+                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
                 {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Yaml Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-12 10:28:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-12-26 13:37:56"
         }
     ],
     "packages-dev": [],
@@ -594,6 +586,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

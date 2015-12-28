@@ -659,6 +659,9 @@ namespace {
             if ($namespace) {
                 echo "namespace " . ($namespace) . ";\n";
             }
+            else {
+                echo "namespace crodas\\Validator\\ns" . (uniqid(true)) . ";\n";
+            }
             echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
             foreach($functions as $name => $body) {
 
@@ -710,6 +713,7 @@ namespace {
                 }
                 echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
             }
+            echo "\nreturn array(\n    'mcallback' => __NAMESPACE__ . '\\get_object_properties',\n    'callback' => __NAMESPACE__ . '\\validate',\n);\n";
 
             if ($return) {
                 return ob_get_clean();
