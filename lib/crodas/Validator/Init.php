@@ -36,7 +36,7 @@
 */
 namespace crodas\Validator;
 
-use Notoj\Dir as DirParser;
+use Notoj;
 use Notoj\Annotation\Base as AnnotationBase;
 use Notoj\Annotation\Annotation;
 use crodas\FileUtil\File;
@@ -56,7 +56,7 @@ class Init extends BaseValidator
 
     protected function getAnnotations()
     {
-        $parser = new DirParser($this->dir);
+        $parser = new Notoj\Filesystem($this->dir);
         return $parser->getClasseS('Validate');
     }
 }

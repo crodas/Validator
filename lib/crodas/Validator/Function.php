@@ -36,8 +36,6 @@
 */
 namespace crodas\Validator;
 
-use stdClass;
-
 /**
  *  @package crodas\Validator
  *  @param Object $object   Object to validate
@@ -46,8 +44,8 @@ use stdClass;
  */
 function validate($object, & $errors)
 {
-    $class = get_class($object);
+    $class     = get_class($object);
     $validator = new Runtime($class);
-    $errors = $validator->validate($object);
+    $errors    = $validator->validate($object);
     return empty($errors);
 }
