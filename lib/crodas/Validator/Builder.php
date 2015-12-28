@@ -45,6 +45,7 @@ class Builder
     protected $map = array();
     protected $ns;
     protected $classes = [];
+    protected static $count = 0;
 
     public function hasRules($rule)
     {
@@ -57,7 +58,7 @@ class Builder
 
     public function createTest($name)
     {
-        $fnc = "validate_" . sha1($name);
+        $fnc = "validate_" . (++self::$count);
         $this->map[$name] = $fnc;
         $this->functions[$fnc] = new ValidateFunction($this);
         return $this->functions[$fnc];
@@ -93,7 +94,7 @@ class Builder
 
     public function getCode()
     {
-        $var       = '$var_' . uniqid(true);
+        $var       = '$var_' . (++self::$count);
         $funcmap   = $this->map;
         $functions = $this->functions;
         $namespace = $this->ns;
