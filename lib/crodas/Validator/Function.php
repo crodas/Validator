@@ -47,7 +47,7 @@ function validate($object, & $errors)
 {
     static $validators = [];
     $class  = get_class($object);
-    if (empty($validtors[$class])) {
+    if (empty($validators[$class])) {
         $validators[$class] = new Runtime($class);
     }
     $errors  = $validators[$class]->validate($object);

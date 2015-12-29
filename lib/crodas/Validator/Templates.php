@@ -2322,7 +2322,7 @@ namespace {
             }
 
             echo $self->result . " = preg_match(";
-            var_export(current($args));
+            var_export($args[0]);
             echo ", " . ($input) . ") === 1;\n";
 
             if ($return) {

@@ -9,6 +9,8 @@ foreach(glob(__DIR__ . '/tmp/*') as $file) {
     unlink($file);
 }
 
+date_default_timezone_set('America/Asuncion');
+
 File::overrideFilepathGenerator(function($prefix) {
     return __DIR__ . '/tmp/';
 });
