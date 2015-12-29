@@ -36,6 +36,7 @@
 */
 namespace crodas\Validator;
 
+use RuntimeException;
 use crodas\SimpleView\FixCode;
 use crodas\FileUtil\File;
 
@@ -47,13 +48,21 @@ class Builder
     protected $classes = [];
     protected static $count = 0;
 
-    public function hasRules($rule)
+    public function hasRules($class, $property)
     {
-        $rule = "validate_" . sha1($rule);
-        if (!empty($this->functions[$rule])) {
-            return $this->functions[$rule]->hasRules();
+        $key = strtolower($class) . '::' . $property;
+        return !empty($this->map[$key]) && 
+            $this->functions[$this->map[$key]]->hasRules();
+    }
+
+    public function functionName($class, $property)
+    {
+        $key = strtolower($class) . '::' . $property;
+        if (empty($this->map[$key])) {
+            throw new RuntimeException("Cannot find validator funciton for $class::$property");
         }
-        return false;
+
+        return $this->map[$key];
     }
 
     public function createTest($name)
@@ -92,7 +101,7 @@ class Builder
         return $this->ns;
     }
 
-    public function getCode()
+    public function getVariables()
     {
         $var       = '$var_' . (++self::$count);
         $funcmap   = $this->map;
@@ -108,11 +117,17 @@ class Builder
             }
         }
 
+        return compact(
+            'namespace','funcmap', 'classes',
+            'body', 'name', 'var', 'functions'
+        );
+    }
+
+    public function getCode()
+    {
+
         $code = Templates::get('body')
-            ->render(compact(
-                'namespace','funcmap', 'classes',
-                'body', 'name', 'var', 'functions'
-            ), true);
+            ->render($this->getVariables(), true);
 
         return FixCode::fix($code);
     }
