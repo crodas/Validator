@@ -97,6 +97,7 @@ abstract class BaseValidator
                 foreach ($property->GetAnnotations() as $ann) {
                     if ($validator->ruleExists($ann->getName())) {
                         $args = $this->getAnnotationARgs($ann);
+                        $args[0] = (array)$args[0];
                         foreach ($args[0] as &$param) {
                             if ($param instanceof Annotation) {
                                 $xargs = $this->getAnnotationArgs($param);
