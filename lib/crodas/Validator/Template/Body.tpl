@@ -1,18 +1,16 @@
 <?php
-
 @if ($namespace) 
 namespace {{$namespace}};
+@else
+namespace crodas\Validator\ns{{uniqid(true)}};
 @end
 
+@if (!is_callable('_')) 
+// gettext was not detected at compile time, so we check at runtime
 if (!is_callable('_')) {
-    // No gettext? That's weird
-    // but no problem mate!
-    function _($a) 
-    {
-        return $a;
-    }
+    function _($a) { return $a; }
 }
-
+@end
 @foreach ($functions as $name => $body)
 function {{$name}} ({{$var}})
 {
@@ -46,10 +44,15 @@ function get_object_properties($object)
     switch ($class) {
     @foreach ($classes as $name => $props)
     case {{@strtolower($name)}}:
+        $data = array(
         @foreach($props as $name => $is_public)
             @if ($is_public)
-                $data[{{@$name}}] = $object->{{$name}};
-            @else
+                {{@$name}} => $object->{{$name}},
+            @end
+        @end
+        );
+        @foreach ($props as $name => $is_public)
+            @if (!$is_public)
                 $property = new \ReflectionProperty($object, {{ @$name }});
                 $property->setAccessible(true);
                 $data[{{@$name}}] = $property->getValue($object);
@@ -63,3 +66,8 @@ function get_object_properties($object)
     return $data;
 }
 @end
+
+return array(
+    'mcallback' => __NAMESPACE__ . '\get_object_properties',
+    'callback' => __NAMESPACE__ . '\validate',
+);

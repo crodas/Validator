@@ -1,1 +1,1 @@
-{{$self->result}} = preg_match({{@current($args)}}, {{$input}}) === 1;
+{{$self->result}} = preg_match({{@$args[0]}}, {{$input}}) === 1;

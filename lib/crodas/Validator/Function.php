@@ -36,27 +36,20 @@
 */
 namespace crodas\Validator;
 
-use Notoj;
-use Notoj\Annotation\Base as AnnotationBase;
-use Notoj\Annotation\Annotation;
-use crodas\FileUtil\File;
-
-class Init extends BaseValidator
+/**
+ *  @package crodas\Validator
+ *  @param Object $object   Object to validate
+ *  @param Array &$errors   Set the array with information about errors
+ *
+ *  @return Bool
+ */
+function validate($object, & $errors)
 {
-    protected $dir;
-    protected $temp;
-    protected $prod;
-
-    public function __construct($dir, $temporary = null, $prod = false)
-    {
-        $this->dir  = $dir;
-        $this->temp = $temporary ? $temporary : File::generateFilepath('validator', $dir);
-        $this->prod = defined('DEVELOPMENT_MODE') ? DEVELOPMENT_MODE : $prod;
+    static $validators = [];
+    $class  = get_class($object);
+    if (empty($validators[$class])) {
+        $validators[$class] = new Runtime($class);
     }
-
-    protected function getAnnotations()
-    {
-        $parser = new Notoj\Filesystem($this->dir);
-        return $parser->getClasseS('Validate');
-    }
+    $errors  = $validators[$class]->validate($object);
+    return empty($errors);
 }

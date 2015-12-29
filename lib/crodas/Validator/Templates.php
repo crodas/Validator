@@ -655,11 +655,17 @@ namespace {
                 ob_start();
             }
 
-            echo "<?php\n\n";
+            echo "<?php\n";
             if ($namespace) {
                 echo "namespace " . ($namespace) . ";\n";
             }
-            echo "\nif (!is_callable('_')) {\n    // No gettext? That's weird\n    // but no problem mate!\n    function _(\$a) \n    {\n        return \$a;\n    }\n}\n\n";
+            else {
+                echo "namespace crodas\\Validator\\ns" . (uniqid(true)) . ";\n";
+            }
+            echo "\n";
+            if (!is_callable('_')) {
+                echo "// gettext was not detected at compile time, so we check at runtime\nif (!is_callable('_')) {\n    function _(\$a) { return \$a; }\n}\n";
+            }
             foreach($functions as $name => $body) {
 
                 $this->context['name'] = $name;
@@ -688,17 +694,23 @@ namespace {
                     $this->context['props'] = $props;
                     echo "    case ";
                     var_export(strtolower($name));
-                    echo ":\n";
+                    echo ":\n        \$data = array(\n";
                     foreach($props as $name => $is_public) {
 
                         $this->context['name'] = $name;
                         $this->context['is_public'] = $is_public;
                         if ($is_public) {
-                            echo "                \$data[";
+                            echo "                ";
                             var_export($name);
-                            echo "] = \$object->" . ($name) . ";\n";
+                            echo " => \$object->" . ($name) . ",\n";
                         }
-                        else {
+                    }
+                    echo "        );\n";
+                    foreach($props as $name => $is_public) {
+
+                        $this->context['name'] = $name;
+                        $this->context['is_public'] = $is_public;
+                        if (!$is_public) {
                             echo "                \$property = new \\ReflectionProperty(\$object, ";
                             var_export($name);
                             echo ");\n                \$property->setAccessible(true);\n                \$data[";
@@ -710,6 +722,7 @@ namespace {
                 }
                 echo "    default:\n        throw new \\Exception(\"Cannot find a validations for {\$class} object\");\n    }\n    return \$data;\n}\n";
             }
+            echo "\nreturn array(\n    'mcallback' => __NAMESPACE__ . '\\get_object_properties',\n    'callback' => __NAMESPACE__ . '\\validate',\n);\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -2309,7 +2322,7 @@ namespace {
             }
 
             echo $self->result . " = preg_match(";
-            var_export(current($args));
+            var_export($args[0]);
             echo ", " . ($input) . ") === 1;\n";
 
             if ($return) {
