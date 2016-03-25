@@ -5,8 +5,10 @@
         "crodas/watch-files": "~0.1",
         "crodas/file-util": ">=0.1.7",
         "crodas/notoj": "^1.0",
-        "crodas/simple-view-engine": ">=0.1.28",
         "crodas/cli": "~0.1"
+    },
+    "require-dev": {
+        "crodas/simple-view-engine": ">=0.1.28"
     },
     "license": "BSD-4-Clause",
     "version": "v0.2.1",

@@ -128,8 +128,12 @@ class Builder
 
         $code = Templates::get('body')
             ->render($this->getVariables(), true);
+        
+        if (class_exists('crodas\SimpleView\FixCode')) {
+            return FixCode::fix($code);
+        }
 
-        return FixCode::fix($code);
+        return $code;
     }
 
     public function mapClass(Array $map)
