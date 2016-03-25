@@ -2,6 +2,7 @@
     "name": "crodas/validator",
     "description": "Validation library",
     "require": {
+        "php": ">=5.4",
         "crodas/watch-files": "~0.1",
         "crodas/file-util": ">=0.1.7",
         "crodas/notoj": "^1.0",
