@@ -128,7 +128,7 @@ class AllTest extends \phpunit_framework_testcase
             ['integer', 'something', false],
             ['integer', 99.99, false],
             ['integer', 99, true],
-            ['integer', 099, true],
+            ['integer', 011, true],
             ['integer', 0x99, true],
 
             ['base64', base64_encode(uniqid(true)), true],
